@@ -7,8 +7,8 @@ Testi di ogni pagina in `contenuti-originali/<nome>.md`.
 
 | Indirizzo | Cosa è | Modulo esterno (link.drewcompany.it/widget/form/...) | Fatta |
 | --- | --- | --- | --- |
-| `/` | Home | Sb7fiVc2IGHPPsXtuCSk | [ ] |
-| `/zes-unica-2026/` | Landing ZES 2026 | DqayKwvDxBYf5edv4OsG | [ ] |
+| `/` | Home | Sb7fiVc2IGHPPsXtuCSk | [x] 24/11 |
+| `/zes-unica-2026/` | Landing ZES 2026 | DqayKwvDxBYf5edv4OsG | [x] 24/11 |
 | `/isi-inail-2026/` | Landing ISI INAIL 2026 (non nel menu) | DqayKwvDxBYf5edv4OsG | [ ] |
 | `/microcredito-imprenditoriale/` | Landing microcredito | fYuIU1eJDacQ8OMfW1vV | [ ] |
 | `/resto-al-sud-2-0/` | Landing Resto al Sud 2.0 (non nel menu) | fYuIU1eJDacQ8OMfW1vV | [ ] |
