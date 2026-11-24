@@ -4,10 +4,9 @@
 
 Progetto appena partito. Il vecchio sito è stato copiato tutto: 38 pagine e
 161 immagini su Drive in `originale/`, i testi pagina per pagina in
-`contenuti-originali/`. C'è lo scheletro Astro. L'archivio GitHub (pubblico) e
-GitHub Pages sono creati, ma **la pubblicazione automatica non è ancora accesa**:
-il file `.github/workflows/pubblica.yml` è pronto sul disco ma non è nel repo,
-perché la chiave di GitHub sul fisso di Caserta non ha il permesso "workflow".
+`contenuti-originali/`. C'è lo scheletro Astro, l'archivio GitHub è pubblico e
+**la pubblicazione automatica funziona** (prima corsa verde il 24/11/2026):
+l'indirizzo di prova mostra la home provvisoria, senza pixel e non indicizzata.
 **Nessuna pagina vera è ancora rifatta.** Il sito vero non è stato toccato.
 
 ## Decisioni prese
@@ -30,16 +29,17 @@ perché la chiave di GitHub sul fisso di Caserta non ha il permesso "workflow".
 
 ## Prossimo passo
 
-1. Accendere la pubblicazione automatica: Salvatore lancia una volta
-   `gh auth refresh -h github.com -s workflow` (si apre il browser, si
-   conferma). Poi Claude aggiunge `.github/workflows/pubblica.yml` (se manca,
-   il testo è nel commit 773789e), fa push e controlla che l'indirizzo di prova
-   https://inizioimpresa.github.io/sito-inizio-impresa/ si apra.
-2. Decidere la veste grafica: rifare quella di oggi più pulita, oppure partire
+1. Decidere la veste grafica: rifare quella di oggi più pulita, oppure partire
    da `aree/inizio-marketing/analisi/2026-11-21-veste-grafica-vera-di-inizio.md`
    (nella memoria sg-second-brain).
-3. Rifare la home e una landing (ZES 2026) e farle vedere a Salvatore.
-4. Poi le altre pagine della sezione A di `PIANO.md`.
+2. Rifare la home e una landing (ZES 2026) e farle vedere a Salvatore.
+3. Poi le altre pagine della sezione A di `PIANO.md`.
+
+Su un computer nuovo: se `git push` rifiuta i file in `.github/workflows/`,
+la chiave di GitHub non ha il permesso "workflow". Si risolve con
+`gh auth refresh -h github.com -s workflow` lanciato da Claude (non dal
+terminale in basso, che non è collegato): Salvatore conferma il codice su
+https://github.com/login/device.
 
 ## Domande aperte (per Salvatore)
 
