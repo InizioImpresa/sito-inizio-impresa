@@ -24,3 +24,21 @@ Se Salvatore cambia idea si corregge qui e nel codice.
   confermare con Salvatore come presentare la ZES ora che quella finestra è chiusa.**
 - **D5 Testi.** Ripresi dal vecchio sito e solo accorciati o riordinati. Il titolo della
   sezione "Chi siamo" è nuovo ("approccio operativo"), ricavato dal testo che c'era.
+- **D6 Componenti aggiunti.** `TestoLungo` (pagine legali), `Grazie` (ringraziamenti),
+  prop `spunte` in `Modulo` (commercialisti e venditori hanno spunte da partner).
+  Il bottone "Consulenza gratuita" sulle pagine senza modulo porta al modulo della home.
+  Le pagine `/thank-you-*` sono sempre `noindex` e fuori dalla sitemap.
+- **D7 Pagine rifatte da quattro aiutanti in parallelo**, stessa veste. Tolto dal vecchio
+  sito, in tutte: le "99 consulenze disponibili", i blocchi ripetuti (versione PC + telefono),
+  le sezioni "Dove siamo" doppie, il grassetto unicode, i testi del tema in inglese, il
+  numero fisso 0823 1658588 nelle pagine (resta nella cookie policy, testo legale).
+  - ISI INAIL 2026: era quasi tutta una copia della ZES; restano solo 65%, 130.000 € e lo scopo.
+  - Resto al Sud 2.0: tolti i segnaposto "XXXXXXXX" e il microcredito incollato.
+  - Camera di Commercio: tolte le frasi "non spendi nulla / paghi zero" contraddette
+    dalle domande frequenti della stessa pagina.
+  - Venditori: nessun modulo dedicato sul vecchio sito, usato quello generico della home.
+  - Marketing e Wedding Marketing: sul vecchio sito sono identiche; rifatte identiche.
+  - Blog: le 3 anteprime portavano a pagine vuote del tema; ora pagina onesta "presto qui".
+  - Privacy e cookie: testo integrale; corretta solo l'email rotta `info@ex.cominizioimpresa.it`.
+- **D8 Microcredito: importo massimo 75.000 € / 100.000 € per le SRL** (il vecchio sito
+  diceva anche "fino a 50.000 €", ma tre pratiche approvate mostrate superano i 50.000 €).

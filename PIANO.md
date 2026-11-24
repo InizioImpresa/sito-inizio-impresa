@@ -9,18 +9,18 @@ Testi di ogni pagina in `contenuti-originali/<nome>.md`.
 | --- | --- | --- | --- |
 | `/` | Home | Sb7fiVc2IGHPPsXtuCSk | [x] 24/11 |
 | `/zes-unica-2026/` | Landing ZES 2026 | DqayKwvDxBYf5edv4OsG | [x] 24/11 |
-| `/isi-inail-2026/` | Landing ISI INAIL 2026 (non nel menu) | DqayKwvDxBYf5edv4OsG | [ ] |
-| `/microcredito-imprenditoriale/` | Landing microcredito | fYuIU1eJDacQ8OMfW1vV | [ ] |
-| `/resto-al-sud-2-0/` | Landing Resto al Sud 2.0 (non nel menu) | fYuIU1eJDacQ8OMfW1vV | [ ] |
-| `/bando-camera-di-commercio/` | Landing bando CdC | 6YfdGTHPG9VEGl3tY4yA | [ ] |
-| `/sei-un-commercialista/` | Per i commercialisti | iOCt6zNGaZp6BrjjeR3K | [ ] |
-| `/inizio-impresa-pro/` | Inizio Impresa PRO | ErtpoEDGvWSavyeEBldm | [ ] |
-| `/wedding-marketing/` | Marketing per il wedding | ikoErRRe2f1nFesaEs0g | [ ] |
-| `/marketing/` | Marketing (non nel menu) | ikoErRRe2f1nFesaEs0g | [ ] |
-| `/sei-un-venditore/` | Per i venditori di beni strumentali | — | [ ] |
-| `/blog-news/` | Blog / news | — | [ ] |
-| `/privacy-policy/`, `/cookie-policy/` | Pagine legali | — | [ ] |
-| `/thank-you-*` (7 pagine) | Pagine di ringraziamento dopo i moduli | — | [ ] |
+| `/isi-inail-2026/` | Landing ISI INAIL 2026 (non nel menu) | DqayKwvDxBYf5edv4OsG | [x] 24/11 |
+| `/microcredito-imprenditoriale/` | Landing microcredito | fYuIU1eJDacQ8OMfW1vV | [x] 24/11 |
+| `/resto-al-sud-2-0/` | Landing Resto al Sud 2.0 (non nel menu) | fYuIU1eJDacQ8OMfW1vV | [x] 24/11 |
+| `/bando-camera-di-commercio/` | Landing bando CdC | 6YfdGTHPG9VEGl3tY4yA | [x] 24/11 |
+| `/sei-un-commercialista/` | Per i commercialisti | iOCt6zNGaZp6BrjjeR3K | [x] 24/11 |
+| `/inizio-impresa-pro/` | Inizio Impresa PRO | ErtpoEDGvWSavyeEBldm | [x] 24/11 |
+| `/wedding-marketing/` | Marketing per il wedding | ikoErRRe2f1nFesaEs0g | [x] 24/11 |
+| `/marketing/` | Marketing (non nel menu) | ikoErRRe2f1nFesaEs0g | [x] 24/11 |
+| `/sei-un-venditore/` | Per i venditori di beni strumentali | — | [x] 24/11 |
+| `/blog-news/` | Blog / news | — | [x] 24/11 |
+| `/privacy-policy/`, `/cookie-policy/` | Pagine legali | — | [x] 24/11 |
+| `/thank-you-*` (7 pagine) | Pagine di ringraziamento dopo i moduli | — | [x] 24/11 |
 
 Le pagine di ringraziamento contano per il pixel: vanno rifatte uguali, stesso indirizzo.
 
