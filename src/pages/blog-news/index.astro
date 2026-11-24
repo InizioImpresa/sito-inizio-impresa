@@ -1,0 +1,64 @@
+---
+// BLOG / NEWS. Sul vecchio sito c'erano solo tre anteprime di articoli (titolo e
+// due righe) che portavano a pagine vuote del tema ("modern-post", "gallery-post",
+// "standard-post"): nessun articolo vero da riprendere. Per ora la pagina lo dice
+// in modo onesto e invita a contattarci.
+import Base from '../../layouts/Base.astro';
+import { contatti } from '../../data/sito';
+const base = import.meta.env.BASE_URL;
+---
+<Base
+  titolo="Blog e news · Inizio Impresa"
+  descrizione="Notizie e aggiornamenti sui bandi e sulla finanza agevolata per le imprese, a cura di Inizio Impresa."
+>
+  <section class="sezione blog">
+    <div class="contenitore">
+      <div class="testata testata--centro">
+        <span class="occhiello">Blog e news</span>
+        <h1>Notizie e aggiornamenti sui bandi</h1>
+        <p>
+          Presto qui notizie e aggiornamenti sui bandi, sui contributi a fondo perduto e sulle
+          novità della finanza agevolata e ordinaria per le imprese.
+        </p>
+      </div>
+
+      <div class="blog-scheda">
+        <div class="icona" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5h12a2 2 0 0 1 2 2v12H6a2 2 0 0 1-2-2V5z" /><path d="M18 9h2v8a2 2 0 0 1-2 2M8 9h6M8 13h6" />
+          </svg>
+        </div>
+        <h2>Hai già un progetto in mente?</h2>
+        <p>
+          Non aspettare il prossimo articolo: raccontaci la tua idea e un nostro consulente ti dirà
+          quali bandi e finanziamenti sono adatti alla tua impresa. La prima analisi è gratuita.
+        </p>
+        <div class="blog-azioni">
+          <a href={base + '#modulo'} class="bottone bottone--pieno">Richiedi una consulenza gratuita</a>
+          <a href={contatti.telefonoLink} class="collegamento">Chiama il {contatti.telefono} →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .blog { background: linear-gradient(180deg, var(--sfondo-tenue) 0%, #fff 100%); }
+  .blog .testata { margin-bottom: 40px; }
+  .blog-scheda {
+    max-width: 680px; margin: 0 auto; text-align: center;
+    background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio);
+    padding: 44px 36px; box-shadow: var(--ombra);
+  }
+  .blog-scheda .icona { margin: 0 auto 18px; }
+  .blog-scheda h2 { font-size: clamp(22px, 2.6vw, 28px); margin-bottom: 12px; }
+  .blog-scheda p { font-size: 17px; }
+  .blog-azioni {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 16px 24px; margin-top: 28px;
+  }
+  @media (max-width: 520px) {
+    .blog-scheda { padding: 32px 20px; }
+    .blog-azioni .bottone { width: 100%; }
+  }
+</style>

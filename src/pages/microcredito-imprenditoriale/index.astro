@@ -1,0 +1,414 @@
+---
+// LANDING MICROCREDITO IMPRENDITORIALE. Testi dal vecchio sito
+// (contenuti-originali/microcredito-imprenditoriale.md), accorciati e riordinati.
+// Tolti: le "99 consulenze disponibili" di luglio/agosto/settembre (numero segnaposto),
+// i doppioni dei blocchi (il vecchio sito li ripeteva per PC e per telefono),
+// la sezione "Dove siamo" (i contatti sono già nel piede).
+// DA CONFERMARE: il vecchio sito diceva "fino a 50.000 €" su PC e "fino a 75.000 € /
+// 100.000 € per le SRL" su telefono. Qui si usa 75.000 / 100.000 perché le pratiche
+// approvate mostrate nella pagina arrivano a 99.890 €.
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Modulo from '../../components/Modulo.astro';
+import Numeri from '../../components/Numeri.astro';
+import Storie from '../../components/Storie.astro';
+import Perche from '../../components/Perche.astro';
+import esito1 from '../../assets/microcredito-imprenditoriale/esito-1.png';
+import esito2 from '../../assets/microcredito-imprenditoriale/esito-2.png';
+import esito3 from '../../assets/microcredito-imprenditoriale/esito-3.png';
+import esito4 from '../../assets/microcredito-imprenditoriale/esito-4.png';
+import esito5 from '../../assets/microcredito-imprenditoriale/esito-5.png';
+
+const spunta = '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>';
+
+const destinatari = [
+  {
+    titolo: 'Start up',
+    testo: "Nuove realtà imprenditoriali che hanno bisogno di capitale iniziale per avviare l'attività e sviluppare i primi progetti.",
+    importo: 'Fino a 100.000 € per le SRL, fino a 75.000 € per le altre forme giuridiche',
+  },
+  {
+    titolo: 'Piccole e microimprese',
+    testo: 'Attività con partita IVA, fino a 10 dipendenti se SRL e fino a 5 dipendenti per le altre forme giuridiche, che vogliono espandersi.',
+    importo: 'Fino a 100.000 € per le SRL, fino a 75.000 € per le altre forme giuridiche',
+  },
+  {
+    titolo: 'Lavoratori autonomi e freelance',
+    testo: 'Professionisti e lavoratori autonomi titolari di partita IVA che vogliono far crescere la propria attività.',
+    importo: 'Fino a 75.000 €',
+  },
+];
+
+const condizioni = [
+  'Rimborso in 120 rate mensili (10 anni)',
+  "Garanzia statale fino all'80% dell'importo",
+  'Tasso di interesse fisso e calmierato, grazie alla copertura statale',
+];
+
+const spese = [
+  {
+    titolo: "Beni e servizi per l'attività",
+    testo: "Macchinari, strumenti e tecnologie necessari all'attività, anche usati.",
+    icona: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  },
+  {
+    titolo: 'Formazione e certificazioni',
+    testo: 'Costi di corsi di formazione e certificazioni per i dipendenti.',
+    icona: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+  },
+  {
+    titolo: 'Retribuzione di dipendenti o soci',
+    testo: "Stipendi di nuovi dipendenti o soci lavoratori dell'azienda.",
+    icona: '<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.8c2.4.6 4 2.3 4 5.2"/>',
+  },
+  {
+    titolo: 'Ristrutturazione e affitto',
+    testo: 'Adeguamento e ristrutturazione di spazi commerciali o produttivi, e affitto dei locali.',
+    icona: '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>',
+  },
+  {
+    titolo: 'Avvio di una nuova attività',
+    testo: "Costi iniziali per la registrazione dell'impresa, licenze, permessi e altre formalità.",
+    icona: '<path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 17h4"/>',
+  },
+];
+
+const passi = [
+  {
+    titolo: 'Richiedi la prefattibilità gratuita',
+    testo: 'Compila il modulo: in pochi minuti ricevi una brochure con tutte le informazioni su come funziona il servizio e come ti supportiamo.',
+  },
+  {
+    titolo: "In 72 ore lavorative ricevi l'esito",
+    testo: 'Ti diamo un quadro chiaro di documenti, requisiti e tempi. Se rientri nei parametri, parti senza rischiare tempo o risorse.',
+  },
+  {
+    titolo: 'In 60 giorni lavorativi la liquidità sul conto',
+    testo: "Confermati i requisiti, ci occupiamo di tutto noi e ti seguiamo passo dopo passo fino all'erogazione.",
+  },
+];
+
+const esiti = [
+  { foto: esito1, importo: '99.890 €' },
+  { foto: esito2, importo: '74.990 €' },
+  { foto: esito3, importo: '61.000 €' },
+  { foto: esito4, importo: '43.990 €' },
+  { foto: esito5, importo: '49.200 €' },
+];
+
+const clienti = [
+  { nome: 'KLU Pizza Club', luogo: 'Roma Prati' },
+  { nome: 'Ama la profumeria', luogo: 'Napoli' },
+  { nome: 'Il Re della focaccia', luogo: 'Napoli' },
+  { nome: 'Arlè Parrucchieri', luogo: 'Chiaiano (NA)' },
+];
+
+const domande = [
+  {
+    d: 'In quanto tempo viene erogato il finanziamento?',
+    r: "Dall'approvazione, la somma viene generalmente erogata entro qualche settimana, al massimo 90 giorni.",
+  },
+  {
+    d: 'Devo presentare una garanzia per la parte non coperta dalla garanzia statale?',
+    r: "Generalmente no. Dipende dalla situazione finanziaria dell'azienda o, per una start up, dalla solidità del business plan. Se l'attività ha buone prospettive, di solito non serve una garanzia aggiuntiva.",
+  },
+  {
+    d: 'Sono ammissibili le spese per lavori di ristrutturazione?',
+    r: "Sì, se i lavori riguardano spazi destinati all'attività (uffici, negozi, aree produttive), sono legati alla sua gestione e rispettano le regole del programma di microcredito.",
+  },
+  {
+    d: 'Vorrei aprire una nuova attività. Posso richiedere il microcredito?',
+    r: "Sì, ma per presentare la richiesta l'impresa deve essere già costituita e iscritta alla Camera di Commercio. Per questo consigliamo una consulenza gratuita: valutiamo insieme la fattibilità e i passi da seguire.",
+  },
+];
+---
+<Base
+  titolo="Microcredito imprenditoriale · Finanziamento con garanzia statale · Inizio Impresa"
+  descrizione="Microcredito imprenditoriale per start up, piccole imprese e professionisti: tasso fisso agevolato, garanzia statale fino all'80%, rimborso in 10 anni. Prefattibilità gratuita con Inizio Impresa."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Garanzia statale fino all'80%</span>
+        <h1>Microcredito <span class="evidenza">imprenditoriale</span></h1>
+        <p class="sottotitolo">
+          Un finanziamento su misura per start up, piccole imprese e lavoratori autonomi che non
+          hanno le garanzie per un prestito bancario: <strong>tasso fisso e agevolato</strong> e
+          <strong>garanzia statale fino all'80%</strong> dell'importo.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Richiedi la prefattibilità gratuita</a>
+        </div>
+        <ul class="spunte">
+          <li>Analisi di prefattibilità gratuita</li>
+          <li>0 € di spese istruttorie</li>
+          <li>Esito in 72 ore lavorative</li>
+        </ul>
+      </div>
+      <div class="cifre" aria-label="La misura in breve">
+        <div class="cifra cifra--grande"><strong>100 mila €</strong><span>importo massimo per le SRL</span></div>
+        <div class="cifra"><strong>75 mila €</strong><span>per le altre forme giuridiche</span></div>
+        <div class="cifra"><strong>120 rate</strong><span>rimborso in 10 anni</span></div>
+        <div class="cifra cifra--scura"><strong>80%</strong><span>dell'importo coperto da garanzia statale</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DI COSA SI TRATTA -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore testata testata--centro" style="margin-bottom:0">
+      <span class="occhiello">Di cosa si tratta</span>
+      <h2>Credito per chi non ha le <span class="evidenza">garanzie</span> della banca.</h2>
+      <p>
+        Il microcredito imprenditoriale è uno strumento che fornisce piccoli finanziamenti per avviare
+        o far crescere un'attività. È pensato per imprenditori e microimprese che hanno difficoltà a
+        ottenere credito dai canali tradizionali: in poche settimane puoi avere la liquidità che ti
+        serve, con tasso fisso agevolato e garanzia dello Stato.
+      </p>
+    </div>
+  </section>
+
+  <!-- A CHI È RIVOLTO -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Requisiti e importi</span>
+        <h2>A chi è rivolto?</h2>
+        <p>L'importo massimo che puoi chiedere dipende da chi sei e dalla forma giuridica.</p>
+      </div>
+      <div class="griglia griglia--3">
+        {destinatari.map((d) => (
+          <div class="scheda scheda--importo">
+            <div class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={spunta} /></div>
+            <h3>{d.titolo}</h3>
+            <p>{d.testo}</p>
+            <p class="importo">{d.importo}</p>
+          </div>
+        ))}
+      </div>
+      <div class="condizioni">
+        <span class="condizioni-titolo">Per tutti:</span>
+        <ul class="spunte">
+          {condizioni.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPESE AMMISSIBILI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Cosa puoi finanziare</span>
+        <h2>Spese ammissibili</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {spese.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- I PASSI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Veloce e semplice</span>
+        <h2>Finanzia la tua impresa in 3 passi</h2>
+      </div>
+      <ol class="linea">
+        {passi.map((p, i) => (
+          <li>
+            <span class="tondo">{i + 1}</span>
+            <div>
+              <h3>{p.titolo}</h3>
+              <p>{p.testo}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- RISULTATI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Risultati tangibili</span>
+        <h2>Alcune pratiche approvate</h2>
+        <p>Estratti delle comunicazioni di esito positivo ricevute dai nostri clienti.</p>
+      </div>
+      <ul class="esiti" role="list">
+        {esiti.map((e) => (
+          <li>
+            <Image src={e.foto} alt={`Esito positivo, importo pari a ${e.importo}`} widths={[240, 480]} sizes="(max-width: 960px) 60vw, 210px" />
+          </li>
+        ))}
+      </ul>
+      <h3 class="clienti-titolo">Alcune attività che ci hanno scelto</h3>
+      <ul class="clienti" role="list">
+        {clienti.map((c) => <li><strong>{c.nome}</strong><span>{c.luogo}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- OFFERTA -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="offerta">
+        <div>
+          <span class="occhiello occhiello--chiaro">Solo un numero limitato di nuove pratiche al mese</span>
+          <h2>Prenota ora e risparmia 500 €.</h2>
+          <p>
+            La prefattibilità è gratuita e senza impegno. Se risulti idoneo, niente costi iniziali:
+            le spese istruttorie te le regaliamo e paghi solo una success fee quando ricevi i fondi.
+          </p>
+          <dl class="prezzi">
+            <div><dt>Spese istruttorie</dt><dd><s>500 €</s> 0 €</dd></div>
+            <div><dt>Success fee, all'erogazione</dt><dd>2.500 €</dd></div>
+          </dl>
+        </div>
+        <a href="#modulo" class="bottone bottone--chiaro">Prenota adesso</a>
+      </div>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Storie
+    titolo="Altre imprese che si sono affidate a noi"
+    testo="Alcune delle attività che abbiamo seguito con altre agevolazioni."
+  />
+
+  <Perche testo="Con Inizio Impresa non ci limitiamo a presentare la domanda: costruiamo un piano sostenibile per avviare o far crescere la tua attività e ti seguiamo in ogni fase, per ottenere il finanziamento nel minor tempo possibile e alle migliori condizioni." />
+
+  <!-- DOMANDE -->
+  <section class="sezione">
+    <div class="contenitore faq-contenitore">
+      <div class="testata">
+        <span class="occhiello">Al fianco delle imprese</span>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq">
+        {domande.map((q) => (
+          <details>
+            <summary>{q.d}</summary>
+            <p>{q.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Modulo
+    id="fYuIU1eJDacQ8OMfW1vV"
+    nome="Modulo Sito Inizio Impresa - Microcredito"
+    titolo="Richiedi una prefattibilità gratuita"
+    testo="Compila il modulo con i tuoi dati e scopri gratuitamente se puoi accedere al microcredito per la tua attività."
+  />
+</Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; font-size: clamp(34px, 6.4vw, 68px); overflow-wrap: break-word; }
+  .sottotitolo { font-size: 18px; max-width: 540px; }
+  .sottotitolo strong { color: var(--testo); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .cifre {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 32px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .cifra {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 20px;
+    box-shadow: var(--ombra); display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+  }
+  .cifra strong { font-family: var(--font-titoli); font-weight: 600; font-size: 24px; color: var(--testo); line-height: 1.1; }
+  .cifra--grande { grid-column: 1 / -1; }
+  .cifra--grande strong { font-size: 52px; color: var(--rosso); }
+  .cifra--scura { grid-column: 1 / -1; background: var(--notte); border-color: var(--notte); color: #c9cad6; }
+  .cifra--scura strong { color: #fff; }
+
+  .scheda--importo { display: flex; flex-direction: column; }
+  .importo {
+    margin-top: auto; padding-top: 18px; font-weight: 600; color: var(--rosso-scuro); font-size: 15px;
+  }
+  .condizioni {
+    margin-top: 24px; padding: 20px 24px; border-radius: var(--raggio-piccolo);
+    background: var(--sfondo-tenue); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px;
+  }
+  .condizioni-titolo { font-weight: 700; color: var(--testo); }
+
+  .linea { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .linea li { display: flex; gap: 16px; align-items: flex-start; }
+  .linea h3 { margin-bottom: 8px; }
+  .tondo {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--rosso); color: #fff; font-family: var(--font-titoli); font-weight: 600;
+  }
+
+  .esiti { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; list-style: none; margin: 0; padding: 0; }
+  .esiti li { border-radius: var(--raggio-piccolo); overflow: hidden; border: 1px solid var(--bordo); background: #fff; }
+  .esiti img { width: 100%; height: auto; }
+  .clienti-titolo { margin: 48px 0 16px; }
+  .clienti { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; list-style: none; margin: 0; padding: 0; }
+  .clienti li {
+    background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo);
+    padding: 16px 18px; display: flex; flex-direction: column; gap: 2px;
+  }
+  .clienti strong { color: var(--testo); font-family: var(--font-titoli); font-weight: 600; }
+  .clienti span { font-size: 14px; }
+
+  .offerta {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    padding: 48px; border-radius: 28px; background: var(--rosso); color: #fff;
+  }
+  .offerta > div { max-width: 640px; }
+  .offerta h2 { color: #fff; }
+  .offerta p { margin-top: 14px; color: #fff3f3; font-size: 17px; }
+  .occhiello--chiaro { color: #ffe1e1; }
+  .prezzi { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; }
+  .prezzi div { background: rgba(255, 255, 255, 0.14); border-radius: var(--raggio-piccolo); padding: 12px 18px; }
+  .prezzi dt { font-size: 13px; color: #ffe1e1; }
+  .prezzi dd { margin: 2px 0 0; font-family: var(--font-titoli); font-weight: 600; font-size: 22px; color: #fff; }
+  .prezzi s { font-size: 16px; opacity: 0.7; margin-right: 6px; }
+
+  .faq-contenitore { max-width: 820px; }
+  .faq { display: grid; gap: 12px; }
+  .faq details { background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo); padding: 0 22px; }
+  .faq summary {
+    cursor: pointer; list-style: none; padding: 18px 28px 18px 0; position: relative;
+    font-family: var(--font-titoli); font-weight: 600; color: var(--testo);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; position: absolute; right: 0; top: 14px; font-size: 22px; color: var(--rosso); }
+  .faq details[open] summary::after { content: '\2212'; }
+  .faq details p { padding-bottom: 20px; }
+
+  @media (max-width: 960px) {
+    .apertura-griglia { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+    .linea { grid-template-columns: 1fr; }
+    .esiti {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 60%;
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin: 0 -20px; padding: 0 20px;
+    }
+    .esiti::-webkit-scrollbar { display: none; }
+    .esiti li { scroll-snap-align: start; }
+    .clienti { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cifre { padding: 18px; }
+    .cifra--grande strong { font-size: 40px; }
+    .offerta { padding: 32px 24px; }
+    .clienti { grid-template-columns: 1fr; }
+  }
+</style>

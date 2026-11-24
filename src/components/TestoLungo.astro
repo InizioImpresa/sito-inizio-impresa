@@ -1,0 +1,59 @@
+---
+// Impaginazione per i testi lunghi (privacy, cookie e simili): una colonna di
+// lettura stretta, titoli h2/h3/h4, paragrafi, elenchi e link già sistemati.
+// Il testo si scrive dentro il componente come normale HTML.
+interface Props {
+  titolo: string;
+  occhiello?: string;
+  sottotitolo?: string;
+}
+const { titolo, occhiello = '', sottotitolo = '' } = Astro.props;
+---
+<section class="sezione testo-lungo-sezione">
+  <div class="contenitore">
+    <article class="testo-lungo">
+      <header class="testo-lungo-testata">
+        {occhiello && <span class="occhiello">{occhiello}</span>}
+        <h1>{titolo}</h1>
+        {sottotitolo && <p class="testo-lungo-sottotitolo">{sottotitolo}</p>}
+      </header>
+      <slot />
+    </article>
+  </div>
+</section>
+
+<style>
+  .testo-lungo-sezione { padding-top: 64px; }
+  .testo-lungo {
+    max-width: 760px; margin: 0 auto;
+    font-size: 17px; line-height: 1.75;
+    overflow-wrap: anywhere;
+  }
+  .testo-lungo-testata { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--bordo); }
+  .testo-lungo-testata h1 { font-size: clamp(32px, 4.4vw, 46px); }
+  .testo-lungo-sottotitolo { margin-top: 14px; font-size: 15px; }
+
+  .testo-lungo :global(h2) { font-size: clamp(22px, 2.6vw, 28px); margin: 48px 0 14px; }
+  .testo-lungo :global(h3) { font-size: 19px; margin: 32px 0 10px; }
+  .testo-lungo :global(h4) { font-size: 16px; margin: 24px 0 8px; }
+  .testo-lungo :global(p) { margin: 0 0 16px; }
+  .testo-lungo :global(ul),
+  .testo-lungo :global(ol) { margin: 0 0 20px; padding-left: 22px; }
+  .testo-lungo :global(li) { margin-bottom: 8px; }
+  .testo-lungo :global(li > ul) { margin: 8px 0 0; }
+  .testo-lungo :global(li::marker) { color: var(--rosso); }
+  .testo-lungo :global(a) { color: var(--notte); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .testo-lungo :global(a:hover) { color: var(--rosso); }
+  .testo-lungo :global(strong) { color: var(--testo); }
+  .testo-lungo :global(.riquadro) {
+    background: var(--sfondo-tenue); border: 1px solid var(--bordo);
+    border-radius: var(--raggio-piccolo); padding: 20px 24px; margin: 0 0 20px;
+  }
+  .testo-lungo :global(.riquadro p:last-child),
+  .testo-lungo :global(.riquadro ul:last-child) { margin-bottom: 0; }
+
+  @media (max-width: 720px) {
+    .testo-lungo-sezione { padding-top: 40px; }
+    .testo-lungo { font-size: 16px; }
+  }
+</style>

@@ -7,8 +7,10 @@ interface Props {
   nome: string;
   titolo?: string;
   testo?: string;
+  spunte?: string[]; // per le pagine dei partner (commercialisti, venditori) si passano spunte adatte
 }
 const {
+  spunte = ['Consulenza gratuita', 'Un consulente dedicato', 'Risposta rapida'],
   id,
   nome,
   titolo = 'Richiedi una consulenza gratuita',
@@ -21,11 +23,7 @@ const {
       <span class="occhiello">Prima analisi senza impegno</span>
       <h2>{titolo}</h2>
       <p>{testo}</p>
-      <ul class="spunte">
-        <li>Consulenza gratuita</li>
-        <li>Un consulente dedicato</li>
-        <li>Risposta rapida</li>
-      </ul>
+      <ul class="spunte">{spunte.map((s) => <li>{s}</li>)}</ul>
       <slot />
     </div>
     <div class="modulo-scheda">

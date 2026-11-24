@@ -1,0 +1,490 @@
+---
+// LANDING BANDO CAMERA DI COMMERCIO (Voucher Digitali Impresa 4.0). Testi dal vecchio sito
+// (contenuti-originali/bando-camera-di-commercio.md), accorciati e riordinati.
+// Tolti: i blocchi "Agevolazioni" del microcredito incollati per errore (75-100 mila €,
+// 120 rate, garanzia statale, limiti di dipendenti), le "99 consulenze disponibili" di
+// luglio/agosto/settembre, la frase "non spendi nulla, né all'inizio né alla fine" e
+// "non anticipi nulla" (in contrasto con le domande frequenti: le spese si anticipano e
+// i servizi digitali si pagano), la sezione "Dove siamo" (contatti già nel piede).
+// DA CONFERMARE: il vecchio titolo parla del bando 2025.
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Modulo from '../../components/Modulo.astro';
+import Numeri from '../../components/Numeri.astro';
+import Storie from '../../components/Storie.astro';
+import esito38 from '../../assets/bando-camera-di-commercio/esito-38.png';
+import esito39 from '../../assets/bando-camera-di-commercio/esito-39.png';
+import esito40 from '../../assets/bando-camera-di-commercio/esito-40.png';
+import esito41 from '../../assets/bando-camera-di-commercio/esito-41.png';
+import esito42 from '../../assets/bando-camera-di-commercio/esito-42.png';
+import sitoSfr from '../../assets/bando-camera-di-commercio/sito-sfr-motors.png';
+import instagramKlu from '../../assets/bando-camera-di-commercio/instagram-klu.png';
+import googleAds from '../../assets/bando-camera-di-commercio/google-ads.png';
+
+const spunta = '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>';
+
+const servizi = [
+  'Presentiamo la domanda per tuo conto e la rendicontiamo, gratis',
+  'Realizziamo o rinnoviamo il tuo sito web',
+  'Gestiamo le campagne sui social e su Google',
+  'Curiamo la tua presenza online a 360°',
+];
+
+const destinatari = [
+  {
+    titolo: 'Start up',
+    testo: 'Stai avviando la tua impresa e vuoi presentarti in modo professionale.',
+    esempio: 'Creare il primo sito web aziendale e iniziare subito a farti conoscere online.',
+  },
+  {
+    titolo: 'Piccole e microimprese',
+    testo: 'La tua azienda è già attiva ma vuoi crescere e digitalizzarti.',
+    esempio: 'Rinnovare il sito, migliorare la presenza su Google e avviare campagne mirate per attrarre più clienti.',
+  },
+  {
+    titolo: 'Lavoratori autonomi e freelance',
+    testo: 'Sei un professionista con partita IVA e vuoi dare più visibilità alla tua attività.',
+    esempio: 'Un sito vetrina professionale e campagne su Instagram e Facebook per far conoscere i tuoi servizi.',
+  },
+];
+
+const spese = [
+  {
+    titolo: 'Pubblicità online',
+    testo: 'Campagne su Instagram, Facebook, Google Ads e YouTube Ads.',
+    icona: '<path d="M3 11v2a1 1 0 001 1h2l5 4V6L6 10H4a1 1 0 00-1 1z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/>',
+  },
+  {
+    titolo: 'Sito web',
+    testo: 'Collegato alle campagne e agli strumenti di analisi.',
+    icona: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
+  },
+  {
+    titolo: 'CRM',
+    testo: 'CRM e marketing automation per gestire i contatti e trasformarli in clienti.',
+    icona: '<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.8c2.4.6 4 2.3 4 5.2"/>',
+  },
+  {
+    titolo: 'Analytics e tracciamento',
+    testo: 'Per misurare i risultati delle campagne.',
+    icona: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  },
+  {
+    titolo: 'Campagne pubblicitarie',
+    testo: 'Locali e nazionali, per acquisire nuovi clienti.',
+    icona: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  },
+];
+
+const passi = [
+  {
+    titolo: 'Richiedi la prefattibilità gratuita',
+    testo: 'Compila il modulo: in pochi minuti ricevi tutte le informazioni su come funziona il servizio e come ti supportiamo.',
+  },
+  {
+    titolo: "In 48 ore lavorative ricevi l'esito",
+    testo: "Ti diamo un quadro chiaro di documenti, requisiti e tempi per ottenere l'agevolazione. Se rientri nei parametri, parti senza rischiare tempo o risorse.",
+  },
+  {
+    titolo: 'Domanda e digitalizzazione',
+    testo: 'Presentiamo e rendicontiamo la domanda gratis e seguiamo la digitalizzazione della tua azienda: sito, campagne su social e Google, presenza online.',
+  },
+];
+
+const esiti = [
+  { foto: esito38, importo: '4.990 €' },
+  { foto: esito39, importo: '6.000 €' },
+  { foto: esito40, importo: '5.200 €' },
+  { foto: esito41, importo: '4.900 €' },
+  { foto: esito42, importo: '3.990 €' },
+];
+
+const lavori = [
+  { foto: sitoSfr, titolo: 'Sito web', alt: 'Il sito web di SFR Motors' },
+  { foto: instagramKlu, titolo: 'Social', alt: 'Il profilo Instagram di KLU Pizza Club' },
+  { foto: googleAds, titolo: 'Google Ads', alt: 'Il pannello di una campagna Google Ads' },
+];
+
+const clienti = [
+  { nome: 'KLU Pizza Club', luogo: 'Roma Prati' },
+  { nome: 'SFR Motors', luogo: 'Roma' },
+  { nome: 'Liccardo Impianti', luogo: 'Napoli' },
+  { nome: 'COSO Ristorante', luogo: 'Roma Centro' },
+];
+
+const motivi = [
+  {
+    titolo: 'Il tuo unico interlocutore',
+    testo: 'Progettiamo e gestiamo le campagne Instagram e Google e curiamo domanda e rendicontazione del voucher.',
+    icona: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+  },
+  {
+    titolo: 'Nessun costo di pratica',
+    testo: 'Presentazione e rendicontazione sono incluse. Investi solo in campagne e strumenti che portano clienti.',
+    icona: '<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  },
+  {
+    titolo: 'Progetto personalizzato',
+    testo: 'Ogni progetto è costruito su misura per la singola impresa, senza pacchetti standard.',
+    icona: '<path d="M4 7h16M4 12h16M4 17h10"/>',
+  },
+  {
+    titolo: 'Un consulente dedicato',
+    testo: 'Ti aggiorna in ogni fase ed è per te un punto di riferimento chiaro e competente.',
+    icona: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>',
+  },
+];
+
+const domande = [
+  {
+    d: 'La pratica ha un costo?',
+    r: 'No: con noi presentazione e rendicontazione sono incluse. Paghi solo i servizi digitali (campagne, sito, CRM…). Presentiamo la domanda solo se la gestione delle campagne pubblicitarie viene affidata a noi.',
+  },
+  {
+    d: 'Devo anticipare la spesa?',
+    r: 'Sì, il voucher funziona così: investi nel progetto e poi recuperi fino a 10.000 €.',
+  },
+  {
+    d: 'Quanto tempo serve per avere i fondi?',
+    r: 'Dopo l’approvazione, i tempi dipendono dalla rendicontazione e dalla Camera di Commercio. In genere qualche mese, ma intanto le campagne sono già attive.',
+  },
+  {
+    d: 'Cosa succede se la mia domanda non viene accolta?',
+    r: 'Hai comunque il progetto pronto e puoi decidere se portarlo avanti. Con noi non hai costi di pratica persa.',
+  },
+];
+---
+<Base
+  titolo="Bando Camera di Commercio · Voucher Digitali Impresa 4.0 · Inizio Impresa"
+  descrizione="Voucher Digitali Impresa 4.0 della Camera di Commercio: fino a 10.000 € a fondo perduto per sito, pubblicità e strumenti digitali. Domanda e rendicontazione gratuite con Inizio Impresa."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Fino a 10.000 € a fondo perduto</span>
+        <h1>Voucher <span class="evidenza">Digitali</span> Impresa 4.0</h1>
+        <p class="sottotitolo">
+          Il bando della <strong>Camera di Commercio</strong> per far crescere la tua azienda con pubblicità
+          e strumenti digitali. Noi presentiamo e rendicontiamo la domanda <strong>gratis</strong> e ci
+          occupiamo della tua digitalizzazione: tu pensi alla tua attività, noi a farti ottenere i fondi.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Richiedi la prefattibilità gratuita</a>
+        </div>
+        <ul class="spunte">
+          <li>Analisi di prefattibilità gratuita</li>
+          <li>Domanda e rendicontazione gratuite</li>
+          <li>Un unico interlocutore</li>
+        </ul>
+      </div>
+      <div class="cifre" aria-label="Il bando in breve">
+        <div class="cifra cifra--grande"><strong>70%</strong><span>dell'investimento coperto a fondo perduto, al massimo</span></div>
+        <div class="cifra"><strong>10 mila €</strong><span>contributo massimo</span></div>
+        <div class="cifra"><strong>0 €</strong><span>per presentare la domanda</span></div>
+        <div class="cifra cifra--scura"><strong>Bando 2025</strong><span>Camera di Commercio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DI COSA SI TRATTA -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata testata--centro">
+        <span class="occhiello">Fondo perduto per la digitalizzazione</span>
+        <h2>Contributi per rendere la tua azienda più <span class="evidenza">digitale</span>.</h2>
+        <p>
+          Ogni anno le Camere di Commercio mettono a disposizione contributi a fondo perduto che possono
+          coprire fino al 70% dell'investimento, per aiutare le aziende a digitalizzarsi e restare
+          competitive. Con Inizio Impresa non devi preoccuparti di nulla:
+        </p>
+      </div>
+      <ul class="servizi" role="list">
+        {servizi.map((s) => (
+          <li>
+            <span class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={spunta} /></span>
+            {s}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- A CHI È RIVOLTO -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Requisiti</span>
+        <h2>A chi è rivolto?</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {destinatari.map((d) => (
+          <div class="scheda scheda--esempio">
+            <div class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={spunta} /></div>
+            <h3>{d.titolo}</h3>
+            <p>{d.testo}</p>
+            <p class="esempio"><strong>Per esempio:</strong> {d.esempio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SPESE AMMISSIBILI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Cosa puoi finanziare con questo bando</span>
+        <h2>Spese ammissibili</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {spese.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- I PASSI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Veloce e semplice</span>
+        <h2>Come funziona, in 3 passi</h2>
+      </div>
+      <ol class="linea">
+        {passi.map((p, i) => (
+          <li>
+            <span class="tondo">{i + 1}</span>
+            <div>
+              <h3>{p.titolo}</h3>
+              <p>{p.testo}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- RISULTATI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Risultati tangibili</span>
+        <h2>Alcune pratiche approvate</h2>
+        <p>Estratti delle comunicazioni di esito positivo ricevute dai nostri clienti.</p>
+      </div>
+      <ul class="esiti" role="list">
+        {esiti.map((e) => (
+          <li>
+            <Image src={e.foto} alt={`Esito positivo, importo pari a ${e.importo}`} widths={[240, 480]} sizes="(max-width: 960px) 60vw, 210px" />
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="sottotitolo-sezione">Cosa realizziamo con i fondi</h3>
+      <ul class="lavori" role="list">
+        {lavori.map((l) => (
+          <li>
+            <Image src={l.foto} alt={l.alt} widths={[480, 760]} sizes="(max-width: 640px) 90vw, 360px" />
+            <span>{l.titolo}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="sottotitolo-sezione">Alcune attività che ci hanno scelto</h3>
+      <ul class="clienti" role="list">
+        {clienti.map((c) => <li><strong>{c.nome}</strong><span>{c.luogo}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- OFFERTA -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="offerta">
+        <div>
+          <span class="occhiello occhiello--chiaro">Solo un numero limitato di nuove pratiche al mese</span>
+          <h2>Approfitta ora: la domanda è gratis.</h2>
+          <p>
+            Prenota senza impegno la tua prefattibilità gratuita. Non paghi spese di presentazione,
+            costi istruttori o commissioni a risultato ottenuto: il nostro obiettivo è farti ottenere il
+            contributo e accompagnarti nella digitalizzazione della tua azienda.
+          </p>
+          <dl class="prezzi">
+            <div><dt>Presentazione della domanda</dt><dd><s>400 €</s> Gratis</dd></div>
+            <div><dt>Success fee, all'erogazione</dt><dd><s>5%</s> 0%</dd></div>
+          </dl>
+        </div>
+        <a href="#modulo" class="bottone bottone--chiaro">Prenota adesso</a>
+      </div>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Storie
+    titolo="Altre imprese che si sono affidate a noi"
+    testo="Alcune delle attività che abbiamo seguito con altre agevolazioni."
+  />
+
+  <!-- PERCHÉ NOI (motivi specifici di questo bando, come nel vecchio sito su PC) -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Soluzioni efficaci, risultati misurabili</span>
+        <h2>Perché affidarti a noi?</h2>
+      </div>
+      <div class="griglia griglia--4">
+        {motivi.map((m) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={m.icona} /></div>
+            <h3>{m.titolo}</h3>
+            <p>{m.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DOMANDE -->
+  <section class="sezione">
+    <div class="contenitore faq-contenitore">
+      <div class="testata">
+        <span class="occhiello">Al fianco delle imprese</span>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq">
+        {domande.map((q) => (
+          <details>
+            <summary>{q.d}</summary>
+            <p>{q.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Modulo
+    id="6YfdGTHPG9VEGl3tY4yA"
+    nome="Modulo Sito Inizio Impresa - Camera di Commercio"
+    titolo="Richiedi una prefattibilità gratuita"
+    testo="Compila il modulo con i tuoi dati e scopri gratuitamente se puoi usare il voucher per fare pubblicità su Instagram e Google, con domanda e rendicontazione incluse."
+  />
+</Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; font-size: clamp(38px, 6vw, 64px); }
+  .sottotitolo { font-size: 18px; max-width: 540px; }
+  .sottotitolo strong { color: var(--testo); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .cifre {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 32px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .cifra {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 20px;
+    box-shadow: var(--ombra); display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+  }
+  .cifra strong { font-family: var(--font-titoli); font-weight: 600; font-size: 24px; color: var(--testo); line-height: 1.1; }
+  .cifra--grande { grid-column: 1 / -1; }
+  .cifra--grande strong { font-size: 56px; color: var(--rosso); }
+  .cifra--scura { grid-column: 1 / -1; background: var(--notte); border-color: var(--notte); color: #c9cad6; }
+  .cifra--scura strong { color: #fff; }
+
+  .servizi {
+    list-style: none; margin: 0 auto; padding: 0; max-width: 880px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .servizi li {
+    display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--bordo);
+    border-radius: var(--raggio-piccolo); padding: 14px 18px; color: var(--testo); font-weight: 500;
+  }
+  .servizi .icona { margin: 0; flex: none; }
+
+  .scheda--esempio { display: flex; flex-direction: column; }
+  .esempio {
+    margin-top: auto; padding-top: 18px; font-size: 15px;
+  }
+  .esempio strong { color: var(--rosso-scuro); }
+
+  .linea { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .linea li { display: flex; gap: 16px; align-items: flex-start; }
+  .linea h3 { margin-bottom: 8px; }
+  .tondo {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--rosso); color: #fff; font-family: var(--font-titoli); font-weight: 600;
+  }
+
+  .esiti { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; list-style: none; margin: 0; padding: 0; }
+  .esiti li { border-radius: var(--raggio-piccolo); overflow: hidden; border: 1px solid var(--bordo); background: #fff; }
+  .esiti img { width: 100%; height: auto; }
+  .sottotitolo-sezione { margin: 48px 0 16px; }
+  .lavori { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; list-style: none; margin: 0; padding: 0; }
+  .lavori li { background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo); overflow: hidden; }
+  .lavori img { width: 100%; height: auto; }
+  .lavori span { display: block; padding: 12px 16px; font-family: var(--font-titoli); font-weight: 600; color: var(--testo); }
+  .clienti { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; list-style: none; margin: 0; padding: 0; }
+  .clienti li {
+    background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo);
+    padding: 16px 18px; display: flex; flex-direction: column; gap: 2px;
+  }
+  .clienti strong { color: var(--testo); font-family: var(--font-titoli); font-weight: 600; }
+  .clienti span { font-size: 14px; }
+
+  .offerta {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    padding: 48px; border-radius: 28px; background: var(--rosso); color: #fff;
+  }
+  .offerta > div { max-width: 640px; }
+  .offerta h2 { color: #fff; }
+  .offerta p { margin-top: 14px; color: #fff3f3; font-size: 17px; }
+  .occhiello--chiaro { color: #ffe1e1; }
+  .prezzi { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; }
+  .prezzi div { background: rgba(255, 255, 255, 0.14); border-radius: var(--raggio-piccolo); padding: 12px 18px; }
+  .prezzi dt { font-size: 13px; color: #ffe1e1; }
+  .prezzi dd { margin: 2px 0 0; font-family: var(--font-titoli); font-weight: 600; font-size: 22px; color: #fff; }
+  .prezzi s { font-size: 16px; opacity: 0.7; margin-right: 6px; }
+
+  .faq-contenitore { max-width: 820px; }
+  .faq { display: grid; gap: 12px; }
+  .faq details { background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo); padding: 0 22px; }
+  .faq summary {
+    cursor: pointer; list-style: none; padding: 18px 28px 18px 0; position: relative;
+    font-family: var(--font-titoli); font-weight: 600; color: var(--testo);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; position: absolute; right: 0; top: 14px; font-size: 22px; color: var(--rosso); }
+  .faq details[open] summary::after { content: '\2212'; }
+  .faq details p { padding-bottom: 20px; }
+
+  @media (max-width: 960px) {
+    .apertura-griglia { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+    .linea { grid-template-columns: 1fr; }
+    .esiti {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 60%;
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin: 0 -20px; padding: 0 20px;
+    }
+    .esiti::-webkit-scrollbar { display: none; }
+    .esiti li { scroll-snap-align: start; }
+    .clienti { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .servizi, .lavori { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cifre { padding: 18px; }
+    .cifra--grande strong { font-size: 44px; }
+    .offerta { padding: 32px 24px; }
+    .clienti { grid-template-columns: 1fr; }
+  }
+</style>

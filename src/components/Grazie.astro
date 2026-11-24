@@ -1,0 +1,65 @@
+---
+// Pagina di ringraziamento dopo l'invio di un modulo.
+// Le pagine /thank-you-*/ tengono lo STESSO indirizzo del vecchio sito:
+// le conversioni di Meta si riconoscono dall'indirizzo, quindi non vanno rinominate.
+interface Props {
+  titolo?: string;
+  testo: string | string[]; // uno o più paragrafi
+  brochure?: string; // indirizzo della brochure da scaricare, se c'è
+  ritorno?: { href: string; testo: string }; // se manca: torna alla home
+}
+const base = import.meta.env.BASE_URL;
+const { titolo = 'Grazie!', testo, brochure, ritorno } = Astro.props;
+const paragrafi = Array.isArray(testo) ? testo : [testo];
+const indietro = ritorno ?? { href: base, testo: 'Torna alla home' };
+---
+<section class="sezione grazie">
+  <div class="contenitore">
+    <div class="grazie-scheda">
+      <div class="grazie-spunta" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+      </div>
+      <h1>{titolo}</h1>
+      {paragrafi.map((p) => <p>{p}</p>)}
+      <div class="grazie-azioni">
+        {brochure && (
+          <a href={brochure} class="bottone bottone--pieno" target="_blank" rel="noopener">
+            Scarica la nostra brochure!
+          </a>
+        )}
+        <a href={indietro.href} class={brochure ? 'collegamento' : 'bottone bottone--pieno'}>
+          {brochure ? indietro.testo + ' →' : indietro.testo}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grazie { padding: 96px 0 112px; background: linear-gradient(180deg, var(--sfondo-tenue) 0%, #fff 100%); }
+  .grazie-scheda {
+    max-width: 620px; margin: 0 auto; text-align: center;
+    background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio);
+    padding: 56px 40px; box-shadow: var(--ombra);
+  }
+  .grazie-spunta {
+    width: 72px; height: 72px; margin: 0 auto 24px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--rosso-chiaro); color: var(--rosso);
+  }
+  .grazie-spunta svg { width: 36px; height: 36px; }
+  .grazie h1 { margin-bottom: 18px; }
+  .grazie p { font-size: 18px; margin: 0 auto 12px; max-width: 480px; }
+  .grazie-azioni {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 16px 24px; margin-top: 32px;
+  }
+  @media (max-width: 520px) {
+    .grazie { padding: 48px 0 64px; }
+    .grazie-scheda { padding: 40px 20px; }
+    .grazie p { font-size: 17px; }
+    .grazie-azioni .bottone { width: 100%; }
+  }
+</style>

@@ -1,0 +1,238 @@
+---
+// COOKIE POLICY. Testo ripreso PAROLA PER PAROLA dal vecchio sito
+// (contenuti-originali/cookie-policy.md), che l'aveva generato il plugin Complianz.
+// Sistemata solo la forma. Tolti i pezzi del plugin che sul sito nuovo non hanno senso:
+// la casella "Consent to service varie", i titoli vuoti "Scadenza"/"Funzione" senza testo
+// e la frase del punto 7.1 ("Hai caricato la Cookie Policy senza supporto javascript...").
+// DA AGGIORNARE prima del passaggio: l'elenco del punto 6 è quello di WordPress
+// (wp-settings, wordpress_logged_in, elementor, cmplz_...) e va rifatto sui cookie veri
+// del sito nuovo, insieme al banner che sostituirà Complianz.
+import Base from '../../layouts/Base.astro';
+import TestoLungo from '../../components/TestoLungo.astro';
+
+// Punto 6: i nomi dei cookie come li elencava il vecchio sito. "scadenza" solo dove c'era.
+const cookie: { nome: string; scadenza?: string }[] = [
+  { nome: 'e_globals' },
+  { nome: 'WP_PREFERENCES_USER_2' },
+  { nome: 'elementor' },
+  { nome: 'e_kit-elements-defaults' },
+  { nome: 'WP_DATA_USER_2' },
+  { nome: 'wpEmojiSettingsSupports' },
+  { nome: 'wordpress_test_cookie' },
+  { nome: 'wp-settings-time-2' },
+  { nome: 'wp-settings-2' },
+  { nome: 'wordpress_logged_in_6789c4dc7a40e8430a46b8812bbd37c0' },
+  { nome: 'wp_lang' },
+  { nome: 'b24_crm_guest_pages' },
+  { nome: 'b24_crm_guest_utm' },
+  { nome: 'eael_countdown_evergreen_interval_13217ed' },
+  { nome: 'eael_countdown_evergreen_time_13217ed' },
+  { nome: '_fbp' },
+  { nome: 'e_event-tracker' },
+  { nome: 'wp-settings-time-1' },
+  { nome: 'wp-settings-1' },
+  { nome: 'WP_PREFERENCES_USER_1' },
+  { nome: 'lastExternalReferrerTime' },
+  { nome: 'topicsLastReferenceTime' },
+  { nome: 'lastExternalReferrer' },
+  { nome: 'cmplz_banner-status', scadenza: '365 giorni' },
+  { nome: 'wordpress_logged_in_373ce77505bb4ed747a71e5e020b1528' },
+  { nome: 'embedded_iframe_inline-Sb7fiVc2IGHPPsXtuCSk' },
+  { nome: 'embedded_iframe_inline-ikoErRRe2f1nFesaEs0g' },
+  { nome: 'embedded_iframe_inline-6YfdGTHPG9VEGl3tY4yA' },
+  { nome: 'WP_DATA_USER_1' },
+  { nome: 'embedded_iframe_inline-iOCt6zNGaZp6BrjjeR3K' },
+  { nome: 'embedded_iframe_inline-fYuIU1eJDacQ8OMfW1vV' },
+  { nome: '_gcl_ls' },
+  { nome: '_gcl_au' },
+  { nome: 'q6Yv6N67AfAQq5zCtNg3' },
+  { nome: 'b24-form-field-stored-values' },
+  { nome: 'b24_crm_guest_id' },
+  { nome: '_ud' },
+  { nome: 'cmplz_consented_services', scadenza: '365 giorni' },
+  { nome: 'cmplz_policy_id', scadenza: '365 giorni' },
+  { nome: 'cmplz_marketing', scadenza: '365 giorni' },
+  { nome: 'cmplz_statistics', scadenza: '365 giorni' },
+  { nome: 'cmplz_preferences', scadenza: '365 giorni' },
+  { nome: 'cmplz_functional', scadenza: '365 giorni' },
+  { nome: 'wp-settings-time-3' },
+  { nome: 'wp-settings-3' },
+  { nome: 'WP_PREFERENCES_USER_3' },
+  { nome: 'bot-builder-storage' },
+  { nome: 'e_my_templates_source' },
+  { nome: 'embedded_iframe_inline-DqayKwvDxBYf5edv4OsG' },
+  { nome: 'embedded_iframe_inline-ErtpoEDGvWSavyeEBldm' },
+  { nome: '_cs_c' },
+  { nome: '_cs_id' },
+  { nome: 'multiFbc' },
+  { nome: '_fbc' },
+];
+---
+<Base titolo="Cookie Policy · Inizio Impresa">
+  <TestoLungo
+    titolo="Cookie Policy"
+    occhiello="Informazioni legali"
+    sottotitolo="Questa politica sui cookie è stata aggiornata l'ultima volta il Luglio 30, 2025 e si applica ai cittadini e ai residenti permanenti legali dello Spazio Economico Europeo e della Svizzera."
+  >
+    <h2>1. Introduzione</h2>
+    <p>
+      Il nostro sito web, <a href="https://inizioimpresa.it">https://inizioimpresa.it</a> (di seguito: "il sito
+      web") utilizza i cookie e altre tecnologie correlate (per comodità tutte le tecnologie sono definite
+      "cookie"). I cookie vengono anche inseriti da terze parti che abbiamo ingaggiato. Nel documento sottostante
+      ti informiamo sull'uso dei cookie sul nostro sito web.
+    </p>
+
+    <h2>2. Cosa sono i cookie?</h2>
+    <p>
+      I cookie sono dei semplici file spediti assieme alle pagine di questo sito e salvati dal tuo browser sul
+      disco rigido del tuo computer o altri dispositivi. Le informazioni raccolte in essi possono venire
+      rispediti ai nostri server oppure ai server di terze parti durante la prossima visita.
+    </p>
+
+    <h2>3. Cosa sono gli script?</h2>
+    <p>
+      Uno script è un pezzo di codice usato per far funzionare correttamente ed interattivamente il nostro sito.
+      Questo codice viene eseguito sui nostri server o sul tuo dispositivo.
+    </p>
+
+    <h2>4. Cos'è un web beacon?</h2>
+    <p>
+      Un web beacon (o pixel tag) è un piccolo, invisibile pezzo di testo o immagine su un sito che viene usato
+      per monitorare il traffico di un sito web. Per fare questo, diversi dati su di te vengono conservati
+      utilizzando dei web beacon.
+    </p>
+
+    <h2>5. Cookie</h2>
+    <h3>5.1 Cookie tecnici o funzionali</h3>
+    <p>
+      Alcuni cookie assicurano il corretto funzionamento del sito e che le tue preferenze rimangano valide.
+      Piazzando cookie funzionali, rendiamo più facile per te visitare il nostro sito web. In questo modo non devi
+      inserire ripetutamente le stesse informazioni quando visiti il nostro sito web, per esempio, l'oggetto
+      rimane nel tuo carrello finché non hai pagato. Possiamo piazzare questi cookie senza il tuo consenso.
+    </p>
+    <h3>5.2 Cookie di marketing/tracciamento</h3>
+    <p>
+      I cookie di marketing/tracciamento sono cookie o qualsiasi altra forma di memorizzazione locale, utilizzati
+      per creare profili utente per visualizzare pubblicità o per tracciare l'utente su questo sito web o su
+      diversi siti web per scopi di marketing simili.
+    </p>
+    <h3>5.3 Social media</h3>
+    <p>
+      Sul nostro sito web abbiamo inserito contenuti di Instagram, WhatsApp e Facebook per promuovere pagine web
+      (ad es. "mi piace", "pin") o condividerle (ad es. "tweet") su social network come Instagram, WhatsApp e
+      Facebook. Questo contenuto è incorporato con codice derivato da Instagram, WhatsApp e Facebook e inserisce
+      cookie. Questo contenuto potrebbe memorizzare ed elaborare alcune informazioni per la pubblicità
+      personalizzata.
+    </p>
+    <p>
+      Leggi l'informativa sulla privacy di questi social network (che possono cambiare regolarmente) per sapere
+      cosa fanno con i tuoi dati (personali) che processano usando questi cookie. I dati ottenuti vengono
+      anonimizzati quanto possibile. Instagram, WhatsApp e Facebook si trovano negli Stati Uniti.
+    </p>
+
+    <h2>6. Cookie inseriti</h2>
+    <h3>Varie</h3>
+    <p>Scopo in attesa di indagine</p>
+    <h4>Condivisione dei dati</h4>
+    <p>La condivisione dei dati è in attesa di indagine</p>
+    <h4>Scopo in attesa di indagine</h4>
+    <ul class="elenco-cookie">
+      {cookie.map((c) => (
+        <li>
+          <code>{c.nome}</code>
+          {c.scadenza && <span>Scadenza: {c.scadenza}</span>}
+        </li>
+      ))}
+    </ul>
+
+    <h2>7. Consenso</h2>
+    <p>
+      Quando visiti il sito web per la prima volta, noi mostreremo un popup con una spiegazione dei cookie. Appena
+      clicchi su "Salva preferenze", dai il permesso a noi di usare le categorie di cookie e plugin come descritto
+      in questa dichiarazione relativa ai popup e cookie. Puoi disabilitare i cookie attraverso il tuo browser, ma
+      prendi in considerazione, che il nostro sito web potrebbe non funzionare più correttamente.
+    </p>
+
+    <h2>8. Abilitare/disabilitare e cancellazione dei cookie</h2>
+    <p>
+      Puoi usare il tuo browser per cancellare automaticamente o manualmente i cookie. È anche possibile
+      specificare che determinati cookie non possono essere piazzati. Un'altra opzione è quella di modificare le
+      impostazioni del tuo browser internet in modo da ricevere un messaggio ogni volta che viene inserito un
+      cookie. Per ulteriori informazioni su queste opzioni, consultare le istruzioni nella sezione Guida del tuo
+      browser.
+    </p>
+    <p>
+      Tieni presente che il nostro sito web potrebbe non funzionare correttamente se tutti i cookie sono
+      disabilitati. Se cancelli i cookie nel vostro browser, essi verranno nuovamente inseriti dopo il consenso
+      fornito quando visiterete nuovamente il nostro sito web.
+    </p>
+
+    <h2>9. I tuoi diritti in relazione ai dati personali</h2>
+    <p>Hai i seguenti diritti relativi ai tuoi dati personali:</p>
+    <ul>
+      <li>
+        Hai il diritto di sapere quando i tuoi dati personali sono necessari, cosa succede ad essi, quanto a lungo
+        verranno mantenuti.
+      </li>
+      <li>Diritto di accesso: hai il diritto ad accedere ai tuoi dati personali dei quali siamo a conoscenza.</li>
+      <li>
+        Diritto di rettifica: hai il diritto di completare, correggere, cancellare o bloccare i tuoi dati personali
+        quando lo desideri.
+      </li>
+      <li>
+        Se ci darai il consenso per elaborare i tuoi dati, hai il diritto di revocare questo consenso e di
+        eliminare i tuoi dati personali.
+      </li>
+      <li>
+        Diritto di trasferire i tuoi dati: hai il diritto di richiedere tutti i tuoi dati dal controllore e
+        trasferirli tutti quanti ad un altro controllore.
+      </li>
+      <li>
+        Diritto di opposizione: hai il diritto ad opporti al trattamento dei tuoi dati. Noi rispetteremo questa
+        scelta, a meno che non ci siano delle motivazioni valide per trattarli.
+      </li>
+    </ul>
+    <p>
+      Per esercitare questi diritti, non esitate a contattarci. Si prega di fare riferimento ai dettagli di
+      contatto in fondo a questa Cookie Policy. Se hai un reclamo su come gestiamo i tuoi dati, vorremmo sentirti,
+      ma hai anche il diritto di presentare un reclamo all'autorità di vigilanza (l'Autorità per la Protezione dei
+      Dati).
+    </p>
+
+    <h2>10. Dettagli di contatto</h2>
+    <p>
+      Per domande e/o commenti riguardo la Cookie Policy e questa dichiarazione, per favore contattaci usando i
+      seguenti dati di contatto:
+    </p>
+    <div class="riquadro">
+      <p>
+        <strong>SAGESS S.R.L.</strong><br />
+        Strada Provinciale 66-01 SNC 81011 Alife (CE)<br />
+        Italia<br />
+        Sito web: <a href="https://inizioimpresa.it">https://inizioimpresa.it</a><br />
+        {/* Sul vecchio sito c era "info@ex.cominizioimpresa.it" (indirizzo rotto del plugin): corretto. */}
+        Email: <a href="mailto:info@inizioimpresa.it">info@inizioimpresa.it</a><br />
+        Numero di telefono: <a href="tel:+3908231658588">08231658588</a>
+      </p>
+    </div>
+    <p>
+      Questa politica sui cookie è stata sincronizzata con
+      <a href="https://cookiedatabase.org/" target="_blank" rel="noopener">cookiedatabase.org</a> il Agosto 1, 2025.
+    </p>
+  </TestoLungo>
+</Base>
+
+<style>
+  .elenco-cookie {
+    list-style: none; padding: 0 !important;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+  }
+  .elenco-cookie li {
+    margin: 0 !important; padding: 10px 14px;
+    border: 1px solid var(--bordo); border-radius: var(--raggio-piccolo); background: #fff;
+    font-size: 14px; line-height: 1.4;
+  }
+  .elenco-cookie code { color: var(--testo); font-size: 13px; word-break: break-all; }
+  .elenco-cookie span { display: block; margin-top: 2px; font-size: 12px; }
+  @media (max-width: 640px) { .elenco-cookie { grid-template-columns: 1fr; } }
+</style>

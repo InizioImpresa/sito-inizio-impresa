@@ -1,0 +1,306 @@
+---
+// LANDING "SEI UN COMMERCIALISTA?" (partnership con gli studi).
+// Testi dal vecchio sito (contenuti-originali/sei-un-commercialista.md), riscritti dando del tu
+// al commercialista. Tolti: le "99 call disponibili" di luglio/agosto/settembre e i blocchi
+// ripetuti due o tre volte. I numeri "negli ultimi 3 anni" sono quelli del vecchio sito:
+// la misura di ogni numero e' ricavata dal logo che gli stava accanto.
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Modulo from '../../components/Modulo.astro';
+import Numeri from '../../components/Numeri.astro';
+import Storie from '../../components/Storie.astro';
+import Perche from '../../components/Perche.astro';
+import brochure from '../../assets/sei-un-commercialista/brochure-studio.png';
+
+const servizi = [
+  {
+    titolo: 'Finanza agevolata',
+    testo: 'I tuoi clienti potranno partecipare ogni anno ai bandi dei vari enti e ottenere contributi a fondo perduto e agevolazioni per far crescere la loro azienda.',
+    icona: '<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  },
+  {
+    titolo: 'Finanziamenti bancari',
+    testo: 'Collaboriamo con numerose banche: in caso di necessità i tuoi clienti potranno ottenere un finanziamento diretto, al miglior tasso sul mercato, in breve tempo.',
+    icona: '<path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M2 10l10-6 10 6"/>',
+  },
+  {
+    titolo: 'Microcredito',
+    testo: "Piccoli prestiti con garanzia statale e tassi d'interesse molto più bassi, ideali per avviare o espandere un'attività senza garanzie personali.",
+    icona: '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h4.5a1.5 1.5 0 0 1 0 3H10a1.5 1.5 0 0 0 0 3h4"/>',
+  },
+  {
+    titolo: 'Leasing e noleggio operativo',
+    testo: "Per i clienti che vogliono nuove attrezzature ma non possono acquistarle direttamente o chiedere un finanziamento.",
+    icona: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  },
+];
+
+const benefici = [
+  {
+    titolo: 'Guadagna di più',
+    testo: 'Aumenta i profitti del tuo studio: su ogni cliente ti è riconosciuta una fee.',
+    icona: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+  },
+  {
+    titolo: 'Differenziati',
+    testo: 'Offri servizi esclusivi che la maggior parte dei commercialisti non offre ancora.',
+    icona: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7L12 3z"/>',
+  },
+  {
+    titolo: 'Diventa un punto di riferimento',
+    testo: 'I tuoi clienti non dovranno cercare altrove: offri un servizio completo.',
+    icona: '<path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  },
+  {
+    titolo: 'Ottieni nuovi clienti',
+    testo: 'Dalle start up che diventano nuovi clienti alle aziende già avviate che arrivano col passaparola.',
+    icona: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M19 8v6M16 11h6"/>',
+  },
+];
+
+const offri = [
+  { titolo: 'Analisi di prefattibilità gratuita', testo: "Per contributi, bandi e finanziamenti l'analisi è gratuita per i tuoi clienti." },
+  { titolo: 'Risparmio di tempo', testo: 'I tuoi clienti non dovranno più rivolgersi a tante figure diverse per le esigenze della loro azienda.' },
+  { titolo: 'Aggiornamento costante', testo: 'Resti aggiornato su bandi e opportunità e offri sempre soluzioni su misura.' },
+  { titolo: 'Brochure personalizzate', testo: 'Ricevi materiale sui nuovi bandi e sui servizi, con il logo e i contatti del tuo studio, da dare ai tuoi clienti.' },
+];
+
+const misure = [
+  { valore: '161+', nome: 'Resto al Sud' },
+  { valore: '112+', nome: 'Microcredito' },
+  { valore: '63+', nome: 'Bando ISI INAIL' },
+  { valore: '32+', nome: 'Fondo Regionale per la Crescita (FRC)' },
+  { valore: '4+', nome: 'ON - Oltre Nuove imprese a tasso zero' },
+  { valore: '2+', nome: 'Smart&Start' },
+];
+
+const testimonianze = [
+  {
+    studio: 'Studio Monteasi Commercialisti',
+    firma: 'N. Monteasi',
+    testo: 'Grazie alla loro competenza offriamo ai nostri clienti un servizio di consulenza finanziaria completo e di alta qualità. Un grande beneficio per il nostro studio, che ha acquisito molti nuovi clienti proprio grazie ai nuovi servizi offerti con Inizio Impresa.',
+  },
+  {
+    studio: 'Caruson & Partner',
+    firma: 'M. Caruson',
+    testo: 'Siamo rimasti colpiti dalla loro professionalità, tempestività e approccio personalizzato. La partnership con Inizio Impresa ci ha aperto nuove opportunità di business. La consigliamo a tutti i commercialisti che vogliono fare la differenza nei servizi finanziari per le aziende.',
+  },
+];
+---
+<Base
+  titolo="Sei un commercialista? Diventa partner · Inizio Impresa"
+  descrizione="Offri ai clienti del tuo studio finanza agevolata, finanziamenti, microcredito, leasing e noleggio operativo. Una fee su ogni cliente. Diventa partner di Inizio Impresa."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Diventa partner</span>
+        <h1>Sei un <span class="evidenza">commercialista</span>?</h1>
+        <p class="sottotitolo">
+          Ottieni più clienti e aumenta i guadagni del tuo studio con nuovi servizi:
+          <strong>finanza agevolata, microcredito, leasing e noleggio operativo</strong>.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Diventa nostro partner</a>
+          <a href="#servizi" class="collegamento">Scopri i servizi →</a>
+        </div>
+        <ul class="spunte">
+          <li>Una fee su ogni cliente</li>
+          <li>Analisi gratuita per i tuoi clienti</li>
+          <li>Brochure con il logo del tuo studio</li>
+        </ul>
+      </div>
+      <div class="cifre" aria-label="Inizio Impresa in breve">
+        <div class="cifra cifra--grande"><strong>92%</strong><span>tasso di approvazione dei nostri progetti</span></div>
+        <div class="cifra"><strong>300+</strong><span>progetti approvati</span></div>
+        <div class="cifra"><strong>19+ mln €</strong><span>finanziati</span></div>
+        <div class="cifra cifra--scura"><strong>Una fee</strong><span>riconosciuta al tuo studio su ogni cliente</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIZI -->
+  <section id="servizi" class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Inizio: al fianco delle imprese</span>
+        <h2>I servizi che porti ai tuoi clienti</h2>
+        <p>Quattro aree in cui lavoriamo per i clienti del tuo studio, mentre tu resti il loro punto di riferimento.</p>
+      </div>
+      <div class="griglia griglia--4">
+        {servizi.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Valore aggiunto per il tuo studio</span>
+        <h2>I tuoi benefici</h2>
+      </div>
+      <div class="griglia griglia--4">
+        {benefici.map((b) => (
+          <div class="scheda">
+            <div class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={b.icona} /></div>
+            <h3>{b.titolo}</h3>
+            <p>{b.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COSA OFFRI AI CLIENTI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Scegli Inizio Impresa: fai la differenza</span>
+        <h2>Cosa offri ai tuoi clienti</h2>
+      </div>
+      <div class="offri">
+        <ul class="offri-elenco" role="list">
+          {offri.map((o) => (
+            <li class="scheda">
+              <h3>{o.titolo}</h3>
+              <p>{o.testo}</p>
+            </li>
+          ))}
+        </ul>
+        <figure class="offri-foto">
+          <Image
+            src={brochure}
+            alt="Esempio di brochure personalizzata con il logo di uno studio partner"
+            widths={[480, 960]}
+            sizes="(max-width: 960px) 100vw, 540px"
+          />
+          <figcaption>Un esempio di materiale personalizzato per uno studio partner.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ULTIMI 3 ANNI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Dalle start up alle imprese consolidate</span>
+        <h2>Inizio Impresa negli ultimi 3 anni</h2>
+        <p>Progetti approvati, misura per misura.</p>
+      </div>
+      <ul class="misure" role="list">
+        {misure.map((m) => (
+          <li class="misura">
+            <strong>{m.valore}</strong>
+            <span>{m.nome}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTIMONIANZE -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Dicono di noi</span>
+        <h2>Alcuni degli studi che collaborano con noi</h2>
+      </div>
+      <div class="griglia griglia--2">
+        {testimonianze.map((t) => (
+          <figure class="scheda citazione">
+            <blockquote><p>{t.testo}</p></blockquote>
+            <figcaption><strong>{t.studio}</strong><span>{t.firma}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Storie />
+
+  <Perche testo="Non ci limitiamo a darti degli strumenti: ti affianchiamo in ogni fase con consulenze personalizzate, materiale dedicato, supporto operativo e accesso diretto a un team di esperti." />
+
+  <Modulo
+    id="iOCt6zNGaZp6BrjjeR3K"
+    nome="Modulo Sito Inizio Impresa - Commerc"
+    titolo="Offri nuovi servizi ai tuoi clienti e fai crescere il tuo studio"
+    spunte={["Collaborazione gratuita", "Un referente dedicato", "Risposta rapida"]}
+    testo="Compila il modulo: ricevi la brochure con tutte le informazioni per diventare nostro partner e prenota una call conoscitiva con noi. Accettiamo solo un numero limitato di nuove collaborazioni ogni mese."
+  />
+</Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; font-size: clamp(32px, 6vw, 64px); overflow-wrap: break-word; }
+  .sottotitolo { font-size: 18px; max-width: 540px; }
+  .sottotitolo strong { color: var(--testo); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .cifre {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 32px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .cifra {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 20px;
+    box-shadow: var(--ombra); display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+    min-width: 0;
+  }
+  .cifra strong { font-family: var(--font-titoli); font-weight: 600; font-size: 24px; color: var(--testo); line-height: 1.1; }
+  .cifra--grande { grid-column: 1 / -1; }
+  .cifra--grande strong { font-size: 56px; color: var(--rosso); }
+  .cifra--scura { grid-column: 1 / -1; background: var(--notte); border-color: var(--notte); color: #c9cad6; }
+  .cifra--scura strong { color: #fff; }
+
+  .offri { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .offri-elenco { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .offri-elenco .scheda { padding: 22px; }
+  .offri-elenco h3 { font-size: 16px; margin-bottom: 8px; }
+  .offri-elenco p { font-size: 15px; }
+  .offri-foto { margin: 0; }
+  .offri-foto img { width: 100%; height: auto; }
+  .offri-foto figcaption { margin-top: 8px; font-size: 13px; text-align: center; }
+
+  .misure { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .misura {
+    display: flex; align-items: baseline; gap: 14px; padding: 22px 24px;
+    border: 1px solid var(--bordo); border-radius: var(--raggio); background: #fff;
+  }
+  .misura strong { flex: none; font-family: var(--font-titoli); font-weight: 600; font-size: 34px; color: var(--rosso); line-height: 1; }
+  .misura span { color: var(--testo); font-weight: 600; }
+
+  .citazione { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+  .citazione blockquote { margin: 0; }
+  .citazione blockquote p { font-size: 16px; }
+  .citazione blockquote p::before { content: '“'; display: block; font-family: var(--font-titoli); font-size: 48px; line-height: .6; color: var(--rosso); margin-bottom: 8px; }
+  .citazione figcaption { display: flex; flex-direction: column; font-size: 14px; }
+  .citazione figcaption strong { color: var(--testo); font-size: 15px; }
+
+  @media (max-width: 960px) {
+    .apertura-griglia { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+    .offri { grid-template-columns: 1fr; }
+    .misure { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .offri-elenco { grid-template-columns: 1fr; }
+    .misure { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cifre { padding: 18px; }
+    .cifra { padding: 16px; }
+    .cifra strong { font-size: 21px; }
+    .cifra--grande strong { font-size: 48px; }
+  }
+</style>

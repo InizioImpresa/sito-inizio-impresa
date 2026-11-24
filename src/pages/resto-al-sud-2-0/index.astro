@@ -1,0 +1,328 @@
+---
+// LANDING RESTO AL SUD 2.0 (non nel menu). Testi dal vecchio sito
+// (contenuti-originali/resto-al-sud-2-0.md), accorciati e riordinati.
+// Tolti: i segnaposto "XXXXXXXX", i blocchi del microcredito incollati per errore
+// (importi 75-100 mila €, 120 rate, garanzia statale, limiti di dipendenti, domande
+// frequenti sul microcredito, pratiche approvate e clienti del microcredito), le
+// "99 consulenze disponibili" di novembre/dicembre/gennaio, il numero fisso nei contatti.
+import Base from '../../layouts/Base.astro';
+import Modulo from '../../components/Modulo.astro';
+import Numeri from '../../components/Numeri.astro';
+import Storie from '../../components/Storie.astro';
+import Perche from '../../components/Perche.astro';
+
+const spunta = '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>';
+
+const destinatari = [
+  {
+    titolo: 'Giovani under 35',
+    testo: 'Tra i 18 anni compiuti e i 35 non ancora compiuti, in condizione di inattività, inoccupazione o disoccupazione.',
+  },
+  {
+    titolo: 'Nel Mezzogiorno',
+    testo: 'Per creare o sviluppare nuove imprese e attività professionali nel Sud Italia.',
+  },
+  {
+    titolo: "Con un'idea concreta",
+    testo: 'Per chi vuole mettersi in proprio ma non ha le risorse o le garanzie per accedere al credito tradizionale.',
+  },
+];
+
+const agevolazioni = [
+  {
+    cifra: '75%',
+    titolo: 'Fondo perduto',
+    testo: 'Contributo a fondo perduto fino al 75% delle spese ammissibili, per investimenti fino a 120.000 €.',
+  },
+  {
+    cifra: '70%',
+    titolo: 'Fondo perduto',
+    testo: 'Contributo a fondo perduto fino al 70% delle spese ammissibili, per investimenti oltre 120.000 € e fino a 200.000 €.',
+  },
+  {
+    cifra: '100%',
+    titolo: 'Voucher di avvio',
+    testo: 'Voucher interamente a fondo perduto fino a 40.000 €, elevabile a 50.000 €, per le spese di avvio.',
+  },
+];
+
+const spese = [
+  {
+    titolo: "Beni e servizi per l'attività",
+    testo: "Strumenti e tecnologie necessari all'attività imprenditoriale.",
+    icona: '<path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 016 0"/>',
+  },
+  {
+    titolo: 'Macchinari, impianti, attrezzature e arredi',
+    testo: "Acquisto dei beni materiali che servono all'attività.",
+    icona: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  },
+  {
+    titolo: 'Formazione e certificazioni',
+    testo: 'Costi di corsi di formazione e certificazioni per i dipendenti.',
+    icona: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+  },
+  {
+    titolo: 'Ristrutturazione',
+    testo: 'Adeguamento e ristrutturazione di spazi commerciali o produttivi, fino al 50% del programma di investimento.',
+    icona: '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>',
+  },
+  {
+    titolo: 'Avvio di una nuova attività',
+    testo: "Costi iniziali per la registrazione dell'impresa, licenze, permessi e altre formalità.",
+    icona: '<path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 17h4"/>',
+  },
+];
+
+const passi = [
+  {
+    titolo: 'Richiedi la prefattibilità gratuita',
+    testo: 'Compila il modulo: in pochi minuti ricevi tutte le informazioni su come funziona il servizio e come ti supportiamo.',
+  },
+  {
+    titolo: "In 48 ore lavorative ricevi l'esito",
+    testo: 'Ti diamo un quadro chiaro di documenti, requisiti e tempi. Se rientri nei parametri, parti senza rischiare tempo o risorse.',
+  },
+  {
+    titolo: 'In 40 giorni lavorativi la liquidità sul conto',
+    testo: "Confermati i requisiti, ci occupiamo di tutto noi e ti seguiamo passo dopo passo fino all'erogazione.",
+  },
+];
+---
+<Base
+  titolo="Resto al Sud 2.0 · Fino al 75% a fondo perduto per under 35 · Inizio Impresa"
+  descrizione="Resto al Sud 2.0: contributi a fondo perduto fino al 75% per i giovani under 35 che avviano un'impresa nel Mezzogiorno. Prefattibilità gratuita con Inizio Impresa."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Fino al 75% a fondo perduto</span>
+        <h1>Resto al Sud <span class="evidenza">2.0</span></h1>
+        <p class="sottotitolo">
+          L'incentivo per i <strong>giovani under 35</strong> che vogliono creare o sviluppare una nuova
+          impresa o attività professionale nel Mezzogiorno. Investimenti fino a <strong>200.000 €</strong>,
+          con un contributo pubblico che copre <strong>fino al 75% delle spese</strong>.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Richiedi la prefattibilità gratuita</a>
+        </div>
+        <ul class="spunte">
+          <li>Analisi di prefattibilità gratuita</li>
+          <li>Esito in 48 ore lavorative</li>
+        </ul>
+      </div>
+      <div class="cifre" aria-label="La misura in breve">
+        <div class="cifra cifra--grande"><strong>75%</strong><span>a fondo perduto per investimenti fino a 120.000 €</span></div>
+        <div class="cifra"><strong>200 mila €</strong><span>investimento massimo</span></div>
+        <div class="cifra"><strong>50 mila €</strong><span>voucher massimo per l'avvio</span></div>
+        <div class="cifra cifra--scura"><strong>Under 35</strong><span>giovani dai 18 anni che avviano un'attività al Sud</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DI COSA SI TRATTA -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore testata testata--centro" style="margin-bottom:0">
+      <span class="occhiello">Di cosa si tratta</span>
+      <h2>Trasforma un'idea in <span class="evidenza">impresa</span>, al Sud.</h2>
+      <p>
+        Resto al Sud 2.0 sostiene la nascita e la crescita di nuove imprese e attività autonome nel
+        Sud Italia. Prevede un contributo a fondo perduto fino al 75% per investimenti fino a 120.000 €
+        (fino al 70% per investimenti più alti, fino a 200.000 €) e un voucher iniziale fino a 50.000 €
+        per le spese di avvio.
+      </p>
+    </div>
+  </section>
+
+  <!-- A CHI È RIVOLTO -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Requisiti</span>
+        <h2>A chi è rivolto?</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {destinatari.map((d) => (
+          <div class="scheda">
+            <div class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={spunta} /></div>
+            <h3>{d.titolo}</h3>
+            <p>{d.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AGEVOLAZIONI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Contributi Resto al Sud 2.0</span>
+        <h2>Le agevolazioni</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {agevolazioni.map((a) => (
+          <div class="scheda">
+            <p class="cifra-scheda">{a.cifra}</p>
+            <h3>{a.titolo}</h3>
+            <p>{a.testo}</p>
+          </div>
+        ))}
+      </div>
+      <div class="maggiorazione">
+        <h3>Voucher maggiorato fino a 10.000 € in più</h3>
+        <p>Puoi ottenerlo se, nella domanda, rispetti almeno una di queste condizioni:</p>
+        <ul>
+          <li>investi almeno il 20% in beni o servizi innovativi, digitali o sostenibili (per esempio tecnologie green o risparmio energetico);</li>
+          <li>usi almeno metà del voucher per consulenze specialistiche fornite da enti iscritti al RUNTS, per sviluppare nuovi prodotti, processi o certificazioni ambientali ed energetiche.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPESE AMMISSIBILI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Cosa puoi finanziare</span>
+        <h2>Spese ammissibili</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {spese.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- I PASSI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Veloce e semplice</span>
+        <h2>Finanzia la tua impresa in 3 passi</h2>
+      </div>
+      <ol class="linea">
+        {passi.map((p, i) => (
+          <li>
+            <span class="tondo">{i + 1}</span>
+            <div>
+              <h3>{p.titolo}</h3>
+              <p>{p.testo}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- OFFERTA -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="offerta">
+        <div>
+          <span class="occhiello occhiello--chiaro">Solo un numero limitato di nuove pratiche al mese</span>
+          <h2>Prenota ora e risparmia 1.000 €.</h2>
+          <p>
+            La prefattibilità è gratuita e senza impegno. Se risulti idoneo e decidi di procedere,
+            paghi solo 1.000 € di spese istruttorie (segreteria e presentazione della domanda) invece
+            di 2.000 €, più una success fee solo quando ricevi i fondi.
+          </p>
+          <dl class="prezzi">
+            <div><dt>Spese istruttorie</dt><dd><s>2.000 €</s> 1.000 €</dd></div>
+            <div><dt>Success fee, all'erogazione</dt><dd>10%</dd></div>
+          </dl>
+        </div>
+        <a href="#modulo" class="bottone bottone--chiaro">Prenota adesso</a>
+      </div>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Storie
+    titolo="Aziende che si sono affidate a noi"
+    testo="Tra queste anche ShoeLab, avviata con Resto al Sud."
+  />
+
+  <Perche testo="Con Inizio Impresa non ci limitiamo a presentare la domanda: costruiamo un piano sostenibile per avviare la tua attività e ti seguiamo in ogni fase, per ottenere l'agevolazione nel minor tempo possibile e alle migliori condizioni." />
+
+  <Modulo
+    id="fYuIU1eJDacQ8OMfW1vV"
+    nome="Modulo Sito Inizio Impresa - Microcredito"
+    titolo="Richiedi una prefattibilità gratuita"
+    testo="Compila il modulo con i tuoi dati e scopri gratuitamente se puoi accedere a Resto al Sud 2.0."
+  />
+</Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; font-size: clamp(44px, 7vw, 72px); }
+  .sottotitolo { font-size: 18px; max-width: 540px; }
+  .sottotitolo strong { color: var(--testo); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .cifre {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 32px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .cifra {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 20px;
+    box-shadow: var(--ombra); display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+  }
+  .cifra strong { font-family: var(--font-titoli); font-weight: 600; font-size: 24px; color: var(--testo); line-height: 1.1; }
+  .cifra--grande { grid-column: 1 / -1; }
+  .cifra--grande strong { font-size: 56px; color: var(--rosso); }
+  .cifra--scura { grid-column: 1 / -1; background: var(--notte); border-color: var(--notte); color: #c9cad6; }
+  .cifra--scura strong { color: #fff; }
+
+  .cifra-scheda {
+    font-family: var(--font-titoli); font-weight: 600; font-size: 40px; line-height: 1;
+    color: var(--rosso); margin-bottom: 14px;
+  }
+  .maggiorazione {
+    margin-top: 20px; padding: 28px; border-radius: var(--raggio);
+    background: var(--notte); color: #c9cad6;
+  }
+  .maggiorazione h3 { color: #fff; margin-bottom: 8px; }
+  .maggiorazione ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+
+  .linea { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .linea li { display: flex; gap: 16px; align-items: flex-start; }
+  .linea h3 { margin-bottom: 8px; }
+  .tondo {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--rosso); color: #fff; font-family: var(--font-titoli); font-weight: 600;
+  }
+
+  .offerta {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    padding: 48px; border-radius: 28px; background: var(--rosso); color: #fff;
+  }
+  .offerta > div { max-width: 640px; }
+  .offerta h2 { color: #fff; }
+  .offerta p { margin-top: 14px; color: #fff3f3; font-size: 17px; }
+  .occhiello--chiaro { color: #ffe1e1; }
+  .prezzi { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0; }
+  .prezzi div { background: rgba(255, 255, 255, 0.14); border-radius: var(--raggio-piccolo); padding: 12px 18px; }
+  .prezzi dt { font-size: 13px; color: #ffe1e1; }
+  .prezzi dd { margin: 2px 0 0; font-family: var(--font-titoli); font-weight: 600; font-size: 22px; color: #fff; }
+  .prezzi s { font-size: 16px; opacity: 0.7; margin-right: 6px; }
+
+  @media (max-width: 960px) {
+    .apertura-griglia { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+    .linea { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cifre { padding: 18px; }
+    .offerta { padding: 32px 24px; }
+    .maggiorazione { padding: 22px; }
+  }
+</style>

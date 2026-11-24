@@ -12,6 +12,7 @@ export default defineConfig({
   site: vero ? 'https://inizioimpresa.it' : 'https://inizioimpresa.github.io',
   base: vero ? '/' : '/sito-inizio-impresa',
   trailingSlash: 'always',
-  integrations: vero ? [sitemap()] : [],
+  // Le pagine di ringraziamento non vanno nella mappa per Google.
+  integrations: vero ? [sitemap({ filter: (p) => !p.includes('/thank-you-') })] : [],
   build: { format: 'directory' },
 });

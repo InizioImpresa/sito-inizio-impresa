@@ -27,6 +27,12 @@ const attuale = Astro.url.pathname;
 </header>
 
 <script>
+  // Sulle pagine senza modulo (blog, privacy, ringraziamenti) "Consulenza gratuita" porta al modulo della home.
+  if (!document.getElementById('modulo')) {
+    document.querySelectorAll<HTMLAnchorElement>('a[href="#modulo"]').forEach((a) => {
+      a.href = import.meta.env.BASE_URL + '#modulo';
+    });
+  }
   const bottone = document.querySelector<HTMLButtonElement>('.apri-menu');
   const testata = document.querySelector('.testata-sito');
   bottone?.addEventListener('click', () => {
