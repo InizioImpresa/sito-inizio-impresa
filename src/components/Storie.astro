@@ -32,10 +32,18 @@ const elenco = solo ? storie.filter((s) => solo.includes(s.nome)) : storie;
 </section>
 
 <style>
+  /* PC: griglia ordinata. Telefono: si scorrono di lato col dito. */
   .storie {
-    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr);
-    gap: 20px; list-style: none; margin: 0; padding: 0 0 12px;
-    overflow-x: auto; scroll-snap-type: x mandatory;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; list-style: none; margin: 0; padding: 0;
+  }
+  @media (max-width: 960px) {
+    .storie {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%;
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin: 0 -20px; padding: 0 20px;
+    }
+    .storie::-webkit-scrollbar { display: none; }
   }
   .storia {
     position: relative; scroll-snap-align: start; border-radius: var(--raggio); overflow: hidden;
@@ -48,5 +56,4 @@ const elenco = solo ? storie.filter((s) => solo.includes(s.nome)) : storie;
   }
   .didascalia h3 { font-size: 16px; }
   .didascalia span { font-size: 13px; color: var(--rosso-scuro); font-weight: 600; }
-  @media (min-width: 1100px) { .storie { grid-auto-columns: calc((100% - 60px) / 4); } }
 </style>

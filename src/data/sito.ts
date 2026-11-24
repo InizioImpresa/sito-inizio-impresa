@@ -27,13 +27,14 @@ export const numeri = [
   { valore: '92%', etichetta: 'Tasso di approvazione' },
 ];
 
+// "breve" è la voce nella barra in alto (deve stare su una riga), "testo" quella nel piede.
 export const menu = [
-  { testo: 'ZES Unica 2026', href: 'zes-unica-2026/' },
-  { testo: 'Microcredito', href: 'microcredito-imprenditoriale/' },
-  { testo: 'Bando Camera di Commercio', href: 'bando-camera-di-commercio/' },
-  { testo: 'Sei un commercialista?', href: 'sei-un-commercialista/' },
-  { testo: 'Inizio Impresa PRO', href: 'inizio-impresa-pro/' },
-  { testo: 'Blog', href: 'blog-news/' },
+  { breve: 'ZES 2026', testo: 'ZES Unica 2026', href: 'zes-unica-2026/' },
+  { breve: 'Microcredito', testo: 'Microcredito', href: 'microcredito-imprenditoriale/' },
+  { breve: 'Camera di Commercio', testo: 'Bando Camera di Commercio', href: 'bando-camera-di-commercio/' },
+  { breve: 'Commercialisti', testo: 'Sei un commercialista?', href: 'sei-un-commercialista/' },
+  { breve: 'Inizio PRO', testo: 'Inizio Impresa PRO', href: 'inizio-impresa-pro/' },
+  { breve: 'Blog', testo: 'Blog', href: 'blog-news/' },
 ];
 
 // Le storie dei clienti, con la misura ottenuta (come sul vecchio sito).
