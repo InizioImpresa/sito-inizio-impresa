@@ -4,8 +4,11 @@
 
 Progetto appena partito. Il vecchio sito è stato copiato tutto: 38 pagine e
 161 immagini su Drive in `originale/`, i testi pagina per pagina in
-`contenuti-originali/`. C'è lo scheletro Astro con la pubblicazione automatica
-su GitHub. **Nessuna pagina vera è ancora rifatta.** Il sito vero non è stato toccato.
+`contenuti-originali/`. C'è lo scheletro Astro. L'archivio GitHub (pubblico) e
+GitHub Pages sono creati, ma **la pubblicazione automatica non è ancora accesa**:
+il file `.github/workflows/pubblica.yml` è pronto sul disco ma non è nel repo,
+perché la chiave di GitHub sul fisso di Caserta non ha il permesso "workflow".
+**Nessuna pagina vera è ancora rifatta.** Il sito vero non è stato toccato.
 
 ## Decisioni prese
 
@@ -27,8 +30,11 @@ su GitHub. **Nessuna pagina vera è ancora rifatta.** Il sito vero non è stato 
 
 ## Prossimo passo
 
-1. Controllare che la prima pubblicazione su GitHub sia verde e che
-   l'indirizzo di prova si apra.
+1. Accendere la pubblicazione automatica: Salvatore lancia una volta
+   `gh auth refresh -h github.com -s workflow` (si apre il browser, si
+   conferma). Poi Claude aggiunge `.github/workflows/pubblica.yml` (se manca,
+   il testo è nel commit 773789e), fa push e controlla che l'indirizzo di prova
+   https://inizioimpresa.github.io/sito-inizio-impresa/ si apra.
 2. Decidere la veste grafica: rifare quella di oggi più pulita, oppure partire
    da `aree/inizio-marketing/analisi/2026-11-21-veste-grafica-vera-di-inizio.md`
    (nella memoria sg-second-brain).
