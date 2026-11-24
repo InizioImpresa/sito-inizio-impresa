@@ -1,14 +1,22 @@
 ---
-// Guscio comune di tutte le pagine.
+// Guscio comune di tutte le pagine: caratteri, colori, testata, piede.
 // I codici di tracciamento (Tag Manager e pixel Meta) sono gli stessi del sito
 // WordPress e partono SOLO sul sito vero (SITO_VERO=1), mai sull'indirizzo di prova.
 // Da decidere prima del passaggio: il banner dei cookie che sostituisce Complianz.
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import Testata from '../components/Testata.astro';
+import Piede from '../components/Piede.astro';
+
 interface Props {
   titolo: string;
   descrizione?: string;
 }
 const { titolo, descrizione = '' } = Astro.props;
-const vero = import.meta.env.SITO_VERO === '1' || process.env.SITO_VERO === '1';
+const vero = process.env.SITO_VERO === '1';
+const base = import.meta.env.BASE_URL;
 const GTM = 'GTM-NFZRRCSM';
 const PIXEL_META = '732045139609308';
 ---
@@ -19,6 +27,12 @@ const PIXEL_META = '732045139609308';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titolo}</title>
     {descrizione && <meta name="description" content={descrizione} />}
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" href={base + 'favicon.png'} />
+    <link rel="apple-touch-icon" href={base + 'apple-touch-icon.png'} />
+    <meta property="og:title" content={titolo} />
+    {descrizione && <meta property="og:description" content={descrizione} />}
+    <meta property="og:locale" content="it_IT" />
     {!vero && <meta name="robots" content="noindex, nofollow" />}
     {vero && (
       <script is:inline define:vars={{ GTM }}>
@@ -34,16 +48,14 @@ const PIXEL_META = '732045139609308';
   </head>
   <body>
     {!vero && <div class="avviso-prova">Indirizzo di prova del nuovo sito: il sito vero resta inizioimpresa.it</div>}
-    <slot />
+    <Testata />
+    <main>
+      <slot />
+    </main>
+    <Piede />
   </body>
 </html>
 
 <style is:global>
-  :root {
-    --testo: #1b1f24;
-    --sfondo: #ffffff;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; font-family: system-ui, sans-serif; color: var(--testo); background: var(--sfondo); }
-  .avviso-prova { background: #fff3c4; color: #5a4500; text-align: center; padding: 6px 12px; font-size: 14px; }
+  .avviso-prova { background: #fff3c4; color: #5a4500; text-align: center; padding: 6px 16px; font-size: 13px; }
 </style>

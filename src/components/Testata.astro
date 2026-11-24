@@ -1,0 +1,84 @@
+---
+// Barra in alto: logo, menu, bottone "Consulenza gratuita". Su telefono il menu si apre a tendina.
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-inizio.png';
+import { menu } from '../data/sito';
+const base = import.meta.env.BASE_URL;
+const attuale = Astro.url.pathname;
+---
+<header class="testata-sito">
+  <div class="contenitore riga">
+    <a href={base} class="marchio" aria-label="Inizio Impresa, torna alla home">
+      <Image src={logo} alt="Inizio" width={112} height={44} loading="eager" />
+    </a>
+    <nav id="menu-principale" class="menu" aria-label="Menu principale">
+      <ul>
+        {menu.map((v) => (
+          <li><a href={base + v.href} aria-current={attuale.endsWith('/' + v.href) ? 'page' : undefined}>{v.testo}</a></li>
+        ))}
+      </ul>
+      <a href="#modulo" class="bottone bottone--pieno solo-telefono">Consulenza gratuita</a>
+    </nav>
+    <a href="#modulo" class="bottone bottone--pieno chiamata solo-pc">Consulenza gratuita</a>
+    <button class="apri-menu" type="button" aria-expanded="false" aria-controls="menu-principale" aria-label="Apri il menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const bottone = document.querySelector<HTMLButtonElement>('.apri-menu');
+  const testata = document.querySelector('.testata-sito');
+  bottone?.addEventListener('click', () => {
+    const aperto = testata?.classList.toggle('aperta') ?? false;
+    bottone.setAttribute('aria-expanded', String(aperto));
+    bottone.setAttribute('aria-label', aperto ? 'Chiudi il menu' : 'Apri il menu');
+  });
+  document.querySelectorAll('.menu a').forEach((a) =>
+    a.addEventListener('click', () => {
+      testata?.classList.remove('aperta');
+      bottone?.setAttribute('aria-expanded', 'false');
+    }),
+  );
+</script>
+
+<style>
+  .testata-sito {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--bordo);
+  }
+  .riga { display: flex; align-items: center; gap: 24px; height: 72px; }
+  .marchio img { width: 112px; height: auto; }
+  .menu { flex: 1; }
+  .menu ul { display: flex; justify-content: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .menu a:not(.bottone) {
+    display: block; padding: 10px 12px; border-radius: 10px;
+    font-size: 15px; font-weight: 500; color: var(--testo); text-decoration: none;
+  }
+  .menu a:not(.bottone):hover, .menu a[aria-current='page'] { color: var(--rosso); }
+  .chiamata { min-height: 44px; padding: 10px 20px; font-size: 15px; }
+  .apri-menu { display: none; }
+  .solo-telefono { display: none; }
+
+  @media (max-width: 1040px) {
+    .solo-pc { display: none; }
+    .apri-menu {
+      display: grid; gap: 5px; place-content: center; margin-left: auto;
+      width: 44px; height: 44px; border: 1px solid var(--bordo); border-radius: 12px;
+      background: #fff; cursor: pointer;
+    }
+    .apri-menu span { width: 18px; height: 2px; background: var(--notte); border-radius: 2px; }
+    .menu {
+      display: none; position: absolute; left: 0; right: 0; top: 72px;
+      background: #fff; border-bottom: 1px solid var(--bordo); padding: 12px 20px 24px;
+      box-shadow: var(--ombra);
+    }
+    .testata-sito.aperta .menu { display: block; }
+    .menu ul { flex-direction: column; gap: 0; }
+    .menu a:not(.bottone) { padding: 14px 4px; font-size: 17px; border-bottom: 1px solid var(--bordo); border-radius: 0; }
+    .solo-telefono { display: flex; width: 100%; margin-top: 18px; }
+  }
+</style>

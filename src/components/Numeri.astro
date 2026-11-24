@@ -1,0 +1,34 @@
+---
+import { numeri } from '../data/sito';
+---
+<section class="sezione sezione--scura">
+  <div class="contenitore">
+    <div class="testata">
+      <span class="occhiello">Risultati concreti</span>
+      <h2>I numeri parlano per noi</h2>
+      <p>
+        Abbiamo lavorato con centinaia di start up e aziende in decine di settori diversi.
+        Il tasso di approvazione dei nostri progetti è del 92%, uno dei più alti del settore.
+      </p>
+    </div>
+    <dl class="griglia griglia--4 numeri">
+      {numeri.map((n) => (
+        <div class="numero">
+          <dt>{n.etichetta}</dt>
+          <dd>{n.valore}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .numeri { margin: 0; }
+  .numero {
+    display: flex; flex-direction: column-reverse; gap: 6px;
+    padding: 28px; border-radius: var(--raggio);
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .numero dd { margin: 0; font-family: var(--font-titoli); font-size: 44px; font-weight: 600; color: #fff; line-height: 1; }
+  .numero dt { font-size: 15px; color: #c9cad6; }
+</style>

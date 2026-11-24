@@ -1,0 +1,63 @@
+---
+// Il modulo contatti. NON è nostro: è lo stesso modulo esterno di link.drewcompany.it
+// che c'è oggi sul sito WordPress, reincollato uguale, così le richieste arrivano
+// dove arrivano oggi. Ogni pagina passa il suo codice modulo (elenco in PIANO.md).
+interface Props {
+  id: string;
+  nome: string;
+  titolo?: string;
+  testo?: string;
+}
+const {
+  id,
+  nome,
+  titolo = 'Richiedi una consulenza gratuita',
+  testo = 'Compila il modulo con i tuoi dati e un nostro consulente ti contatterà il prima possibile per mostrarti le migliori soluzioni per la tua azienda.',
+} = Astro.props;
+---
+<section id="modulo" class="sezione sezione--tenue">
+  <div class="contenitore modulo-griglia">
+    <div class="modulo-testo">
+      <span class="occhiello">Prima analisi senza impegno</span>
+      <h2>{titolo}</h2>
+      <p>{testo}</p>
+      <ul class="spunte">
+        <li>Consulenza gratuita</li>
+        <li>Un consulente dedicato</li>
+        <li>Risposta rapida</li>
+      </ul>
+      <slot />
+    </div>
+    <div class="modulo-scheda">
+      <iframe
+        src={`https://link.drewcompany.it/widget/form/${id}`}
+        style="width:100%;height:100%;border:none;border-radius:0px"
+        id={`inline-${id}`}
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name={nome}
+        data-height="undefined"
+        data-layout-iframe-id={`inline-${id}`}
+        data-form-id={id}
+        title={nome}
+      ></iframe>
+    </div>
+  </div>
+</section>
+<script is:inline src="https://link.drewcompany.it/js/form_embed.js"></script>
+
+<style>
+  .modulo-griglia { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+  .modulo-testo p { margin: 16px 0 24px; font-size: 17px; }
+  .modulo-scheda {
+    background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio);
+    padding: 12px; min-height: 620px; box-shadow: var(--ombra);
+  }
+  .modulo-scheda iframe { min-height: 600px; }
+  @media (max-width: 860px) { .modulo-griglia { grid-template-columns: 1fr; gap: 32px; } }
+</style>

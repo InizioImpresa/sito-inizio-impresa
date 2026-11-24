@@ -1,11 +1,258 @@
 ---
-// Home PROVVISORIA: serve solo a verificare che la pubblicazione automatica
-// funzioni. Va sostituita con la home vera (testi in contenuti-originali/home.md).
+// HOME. Testi presi dal vecchio sito (contenuti-originali/home.md), riordinati.
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import Modulo from '../components/Modulo.astro';
+import Numeri from '../components/Numeri.astro';
+import Storie from '../components/Storie.astro';
+import Perche from '../components/Perche.astro';
+import team from '../assets/team.png';
+import consulente from '../assets/consulente.png';
+import { contatti } from '../data/sito';
+const base = import.meta.env.BASE_URL;
+
+const servizi = [
+  {
+    titolo: 'Finanza agevolata e contributi a fondo perduto',
+    testo:
+      "Supportiamo le imprese nell'accesso a bandi regionali, nazionali ed europei. Ci occupiamo di tutto: dall'analisi del bando alla presentazione della domanda, fino alla rendicontazione finale.",
+    icona: '<path d="M12 3v18M17 7.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2.2 2.6 5 3 5 1.3 5 3.3-2.2 3.2-5 3.2-5-1.2-5-3"/>',
+  },
+  {
+    titolo: 'Microcredito e finanziamenti',
+    testo:
+      "Ti aiutiamo ad accedere a soluzioni di credito snelle, veloci e garantite, anche se sei una startup o una piccola impresa, con un tasso calmierato e senza sorprese.",
+    icona: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+  },
+  {
+    titolo: 'Leasing strumentale e noleggio operativo',
+    testo:
+      "Collaboriamo con oltre 40 istituti per offrirti formule flessibili e vantaggiose per acquistare o noleggiare macchinari, attrezzature e beni strumentali.",
+    icona: '<path d="M3 20h18M6 20V9l6-4 6 4v11M10 20v-5h4v5"/>',
+  },
+];
+
+const passi = [
+  {
+    titolo: 'Analisi su misura',
+    testo:
+      'Studiamo il tuo caso e individuiamo le soluzioni finanziarie o agevolative più adatte ai tuoi obiettivi e alle caratteristiche della tua azienda.',
+  },
+  {
+    titolo: 'Preparazione e presentazione della domanda',
+    testo:
+      "Raccogliamo i documenti, predisponiamo la domanda e gestiamo l'intero iter burocratico con l'ente erogatore, in modo rapido e professionale.",
+  },
+  {
+    titolo: 'Assistenza dopo l\'approvazione',
+    testo:
+      "Non ti lasciamo solo dopo l'ok: ti supportiamo nella rendicontazione, nell'ottenimento dei contributi e nel monitoraggio dei risultati.",
+  },
+];
 ---
-<Base titolo="Inizio Impresa" descrizione="Finanza agevolata e finanza ordinaria per le PMI.">
-  <main style="max-width: 720px; margin: 64px auto; padding: 0 16px;">
-    <h1>Sosteniamo la crescita della tua impresa</h1>
-    <p>Il nuovo sito di Inizio Impresa è in costruzione.</p>
-  </main>
+<Base
+  titolo="Inizio Impresa · Finanza agevolata e finanza ordinaria per le PMI"
+  descrizione="Inizio Impresa aiuta le PMI a ottenere contributi a fondo perduto, microcredito, finanziamenti, leasing e noleggio operativo. 92% di pratiche approvate."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Partner d'impresa</span>
+        <h1>Sosteniamo la <span class="evidenza">crescita</span> della tua impresa.</h1>
+        <p class="sottotitolo">
+          Specializzati in finanza agevolata e finanza ordinaria: dai contributi a fondo perduto
+          al microcredito, fino a leasing e noleggio operativo. Soluzioni su misura per le PMI italiane.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Richiedi una consulenza gratuita</a>
+          <a href="#servizi" class="collegamento">Cosa facciamo →</a>
+        </div>
+        <ul class="spunte">
+          <li>Prima analisi gratuita</li>
+          <li>Consulente dedicato</li>
+          <li>Oltre 40 istituti partner</li>
+        </ul>
+      </div>
+
+      <div class="vetrina" aria-label="Inizio Impresa in breve">
+        <div class="vetrina-scheda vetrina-grande">
+          <span class="vetrina-numero">92%</span>
+          <span>delle pratiche avviate<br />viene approvata</span>
+        </div>
+        <div class="vetrina-scheda vetrina-persona">
+          <Image src={consulente} alt="" width={56} height={56} class="avatar" />
+          <div>
+            <strong>Un consulente dedicato</strong>
+            <span>ti aggiorna in ogni fase</span>
+          </div>
+        </div>
+        <div class="vetrina-scheda vetrina-riga">
+          <div><strong>300+</strong><span>progetti approvati</span></div>
+          <div><strong>19 mln+</strong><span>euro finanziati</span></div>
+        </div>
+        <div class="vetrina-scheda vetrina-scura">
+          <span class="punto"></span>
+          <div><strong>Analisi gratuita</strong><span>Prima verifichiamo i requisiti, poi si parte</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore testata testata--centro" style="margin-bottom:0">
+      <span class="occhiello">Chi siamo</span>
+      <h2>Ci definiscono "consulenti", ma il nostro approccio è <span class="evidenza">operativo</span>.</h2>
+      <p>
+        Aiutiamo le imprese a ottenere le risorse di cui hanno bisogno per nascere, crescere e innovare.
+        Ci occupiamo di finanza agevolata e ordinaria costruendo soluzioni su misura per ogni cliente,
+        con un approccio consulenziale completo e orientato ai risultati.
+      </p>
+    </div>
+  </section>
+
+  <!-- COSA FACCIAMO -->
+  <section id="servizi" class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Cosa facciamo</span>
+        <h2>Finanza agevolata e ordinaria, un unico partner.</h2>
+      </div>
+      <div class="griglia griglia--3">
+        {servizi.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+      <div class="misure">
+        <span>Misure attive:</span>
+        <a href={base + 'zes-unica-2026/'}>ZES Unica 2026</a>
+        <a href={base + 'microcredito-imprenditoriale/'}>Microcredito</a>
+        <a href={base + 'bando-camera-di-commercio/'}>Bando Camera di Commercio</a>
+        <a href={base + 'isi-inail-2026/'}>ISI INAIL 2026</a>
+        <a href={base + 'resto-al-sud-2-0/'}>Resto al Sud 2.0</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COME LAVORIAMO -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Analisi, domanda, approvazione</span>
+        <h2>In che modo possiamo supportarti?</h2>
+      </div>
+      <ol class="griglia griglia--3 passi">
+        {passi.map((p, i) => (
+          <li class="scheda">
+            <span class="passo">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.titolo}</h3>
+            <p>{p.testo}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Perche />
+
+  <!-- LE PERSONE -->
+  <section class="sezione">
+    <div class="contenitore persone">
+      <div class="persone-testo">
+        <span class="occhiello">Persone, prima dei moduli</span>
+        <h2>Un punto di riferimento chiaro, competente e disponibile.</h2>
+        <p>
+          I nostri uffici sono a Piedimonte Matese, in provincia di Caserta, ma operiamo in tutta
+          Italia con un servizio completamente digitale. Da anni siamo un punto di riferimento per
+          chi cerca soluzioni di finanza agevolata in Campania.
+        </p>
+        <a href="#modulo" class="bottone bottone--notte">Parla con un consulente</a>
+      </div>
+      <Image src={team} alt="Il team di Inizio Impresa" widths={[480, 800, 1080]} sizes="(max-width: 860px) 100vw, 540px" class="foto-team" />
+    </div>
+  </section>
+
+  <Storie />
+
+  <!-- DOVE SIAMO -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore dove">
+      <div>
+        <span class="occhiello">Ovunque sia la tua impresa, ci siamo</span>
+        <h2>Dove siamo</h2>
+        <ul class="contatti">
+          <li><span>Email</span><a href={`mailto:${contatti.email}`}>{contatti.email}</a></li>
+          <li><span>Telefono</span><a href={contatti.telefonoLink}>{contatti.telefono}</a></li>
+          <li><span>Ufficio</span>{contatti.indirizzo}</li>
+        </ul>
+      </div>
+      <iframe class="mappa" src={contatti.mappa} title="Mappa: Piazza Roma 7, Piedimonte Matese" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <Modulo id="Sb7fiVc2IGHPPsXtuCSk" nome="Modulo Sito Inizio Impresa - Gen. Finanza Ag." />
 </Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; }
+  .sottotitolo { font-size: 18px; max-width: 520px; }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .vetrina {
+    position: relative; display: grid; gap: 14px; padding: 40px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .vetrina-scheda {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 18px 20px;
+    box-shadow: var(--ombra); display: flex; align-items: center; gap: 14px; font-size: 14px;
+  }
+  .vetrina-scheda strong { display: block; color: var(--testo); font-size: 15px; }
+  .vetrina-grande { gap: 18px; }
+  .vetrina-numero { font-family: var(--font-titoli); font-weight: 600; font-size: 48px; line-height: 1; color: var(--rosso); }
+  .vetrina-persona { margin-left: 28px; }
+  .avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .vetrina-riga { display: grid; grid-template-columns: 1fr 1fr; }
+  .vetrina-riga strong { font-family: var(--font-titoli); font-size: 22px; }
+  .vetrina-scura { background: var(--notte); border-color: var(--notte); color: #c9cad6; margin-left: 28px; }
+  .vetrina-scura strong { color: #fff; }
+  .punto { width: 10px; height: 10px; border-radius: 50%; background: #3ad38a; box-shadow: 0 0 0 5px rgba(58, 211, 138, 0.2); flex: none; }
+
+  .misure { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 28px; font-size: 14px; }
+  .misure span { font-weight: 600; color: var(--testo); }
+  .misure a {
+    padding: 8px 14px; border: 1px solid var(--bordo); border-radius: 999px;
+    text-decoration: none; color: var(--testo); background: #fff;
+  }
+  .misure a:hover { border-color: var(--rosso); color: var(--rosso); }
+
+  .passi { list-style: none; margin: 0; padding: 0; }
+  .passo { display: inline-block; font-family: var(--font-titoli); font-weight: 600; color: var(--rosso); font-size: 15px; margin-bottom: 14px; }
+
+  .persone { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .persone-testo p { margin: 16px 0 28px; font-size: 17px; }
+  .foto-team { border-radius: 28px; width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+  .dove { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+  .contatti { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; font-size: 17px; }
+  .contatti span { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--rosso); }
+  .contatti a { color: var(--testo); font-weight: 600; text-decoration: none; }
+  .mappa { width: 100%; height: 360px; border: 0; border-radius: var(--raggio); }
+
+  @media (max-width: 960px) {
+    .apertura-griglia, .persone, .dove { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+  }
+  @media (max-width: 520px) {
+    .vetrina { padding: 20px; }
+    .vetrina-persona, .vetrina-scura { margin-left: 0; }
+  }
+</style>

@@ -1,0 +1,247 @@
+---
+// LANDING ZES UNICA 2026. Testi dal vecchio sito (contenuti-originali/zes-unica-2026.md).
+// Tolti (vedi DECISIONI.md): il conto alla rovescia scaduto (30 maggio 2026), le "99
+// consulenze disponibili" di luglio/agosto/settembre, e i blocchi del microcredito
+// incollati qui per errore nel vecchio sito.
+import Base from '../../layouts/Base.astro';
+import Modulo from '../../components/Modulo.astro';
+import Numeri from '../../components/Numeri.astro';
+import Storie from '../../components/Storie.astro';
+import Perche from '../../components/Perche.astro';
+
+const regioni = 'Abruzzo, Basilicata, Calabria, Campania, Molise, Puglia, Sicilia e Sardegna, estesa anche a Marche e Umbria';
+
+const destinatari = [
+  {
+    titolo: 'Imprese del Mezzogiorno',
+    testo: 'Tutte le imprese, già operative o di nuovo insediamento, con sede o investimenti localizzati nella ZES Unica.',
+  },
+  {
+    titolo: 'Imprese che investono',
+    testo: "Aziende che realizzano progetti di investimento iniziale nel 2026, per l'acquisto o l'ampliamento di strutture produttive.",
+  },
+  {
+    titolo: 'PMI e grandi imprese',
+    testo: "Imprese di qualsiasi dimensione e forma giuridica che vogliono ridurre il costo degli investimenti tramite credito d'imposta.",
+  },
+];
+
+const spese = [
+  {
+    titolo: 'Macchinari e attrezzature',
+    testo: 'Acquisto, anche tramite leasing, di macchinari, impianti e attrezzature nuovi destinati a strutture produttive nella ZES.',
+    icona: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  },
+  {
+    titolo: 'Terreni e immobili',
+    testo: "Acquisto di terreni e costruzione, acquisizione o ampliamento di immobili strumentali, entro il 50% del valore complessivo dell'investimento.",
+    icona: '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>',
+  },
+];
+
+const passi = [
+  { titolo: 'Prenotazione del credito', testo: 'Comunicazione da presentare dal 31 marzo al 30 maggio 2026, indicando gli investimenti realizzati o da realizzare.' },
+  { titolo: 'Comunicazione integrativa', testo: 'Da trasmettere dal 3 al 17 gennaio 2027, con attestazione delle spese sostenute da parte di un revisore o soggetto abilitato.' },
+  { titolo: 'Riconoscimento del credito', testo: 'Entro 10 giorni dalla chiusura della finestra di presentazione della comunicazione integrativa.' },
+];
+---
+<Base
+  titolo="ZES Unica 2026 · Credito d'imposta fino al 60% · Inizio Impresa"
+  descrizione="Investimenti nel 2026 nel Mezzogiorno? Con la ZES Unica puoi ottenere fino al 60% di credito d'imposta. Analisi di prefattibilità gratuita con Inizio Impresa."
+>
+  <!-- APERTURA -->
+  <section class="apertura">
+    <div class="contenitore apertura-griglia">
+      <div>
+        <span class="pillola">Credito d'imposta fino al 60%</span>
+        <h1>ZES Unica <span class="evidenza">2026</span></h1>
+        <p class="sottotitolo">
+          Hai in programma investimenti tra il 1° gennaio e il 31 dicembre 2026?
+          Con la ZES Unica puoi ottenere fino al <strong>60% di credito d'imposta</strong>.
+        </p>
+        <div class="azioni">
+          <a href="#modulo" class="bottone bottone--pieno">Richiedi la prefattibilità gratuita</a>
+          <a href="https://wa.me/393200831910" class="collegamento" rel="noopener">Scrivici su WhatsApp →</a>
+        </div>
+        <ul class="spunte">
+          <li>Analisi di prefattibilità gratuita</li>
+          <li>0 € di spese istruttorie</li>
+        </ul>
+      </div>
+      <div class="cifre" aria-label="La misura in breve">
+        <div class="cifra cifra--grande"><strong>60%</strong><span>credito d'imposta massimo</span></div>
+        <div class="cifra"><strong>200 mila €</strong><span>investimento minimo</span></div>
+        <div class="cifra"><strong>100 mln €</strong><span>investimento massimo</span></div>
+        <div class="cifra cifra--scura"><strong>2026</strong><span>investimenti dal 1° gennaio al 31 dicembre</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DI COSA SI TRATTA -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore testata testata--centro" style="margin-bottom:0">
+      <span class="occhiello">Di cosa si tratta</span>
+      <h2>Un'agevolazione fiscale per chi <span class="evidenza">investe</span> nel Mezzogiorno.</h2>
+      <p>
+        Consente alle imprese di ottenere un credito d'imposta fino al 60% sugli investimenti realizzati
+        nella Zona Economica Speciale Unica. Sostiene progetti di crescita, ampliamento o insediamento di
+        nuove attività produttive. Le percentuali variano in base alla localizzazione e alla dimensione dell'impresa.
+      </p>
+    </div>
+  </section>
+
+  <!-- A CHI È RIVOLTO -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Requisiti e settori</span>
+        <h2>A chi è rivolto?</h2>
+        <p>
+          A tutte le imprese, di qualsiasi dimensione e forma giuridica, con sede o investimenti nella
+          ZES Unica: {regioni}.
+        </p>
+      </div>
+      <div class="griglia griglia--3">
+        {destinatari.map((d) => (
+          <div class="scheda">
+            <div class="icona icona--notte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <h3>{d.titolo}</h3>
+            <p>{d.testo}</p>
+          </div>
+        ))}
+      </div>
+      <p class="nota">Settori esclusi: siderurgia, carbone, energia, trasporti, finanza e assicurazioni.</p>
+    </div>
+  </section>
+
+  <!-- SPESE AMMISSIBILI -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Cosa posso acquistare?</span>
+        <h2>Spese ammissibili</h2>
+        <p>Rientrano gli investimenti che fanno parte di un progetto di investimento iniziale.</p>
+      </div>
+      <div class="griglia griglia--2">
+        {spese.map((s) => (
+          <div class="scheda">
+            <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icona} /></div>
+            <h3>{s.titolo}</h3>
+            <p>{s.testo}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- I PASSI -->
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="testata">
+        <span class="occhiello">Gli step operativi</span>
+        <h2>Struttura dell'agevolazione</h2>
+      </div>
+      <ol class="linea">
+        {passi.map((p, i) => (
+          <li>
+            <span class="tondo">{i + 1}</span>
+            <div>
+              <h3>{p.titolo}</h3>
+              <p>{p.testo}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Storie
+    titolo="Alcuni dei nostri risultati"
+    testo="Alcune delle attività che ci hanno scelto gli scorsi anni."
+  />
+
+  <!-- OFFERTA -->
+  <section class="sezione sezione--tenue">
+    <div class="contenitore">
+      <div class="offerta">
+        <div>
+          <span class="occhiello occhiello--chiaro">Solo per un numero limitato di aziende al mese</span>
+          <h2>Risparmia 500 € sulle spese istruttorie.</h2>
+          <p>
+            Prenota ora la tua analisi di prefattibilità, gratuita e senza impegno: spese istruttorie
+            a 0 € anziché 500 €. Ti seguiamo in ogni fase, dalla verifica iniziale fino all'invio della pratica.
+          </p>
+        </div>
+        <a href="#modulo" class="bottone bottone--chiaro">Prenota adesso</a>
+      </div>
+    </div>
+  </section>
+
+  <Numeri />
+
+  <Perche testo="Partiamo da una prefattibilità gratuita per verificare requisiti e ammissibilità dell'investimento. Poi prepariamo e presentiamo la domanda, con assistenza tecnica fino al riconoscimento del credito." />
+
+  <Modulo
+    id="DqayKwvDxBYf5edv4OsG"
+    nome="Modulo ZES Unica 2026"
+    titolo="Richiedi una prefattibilità gratuita"
+    testo="Compila il modulo: verifichiamo subito se il tuo investimento può rientrare nella ZES Unica."
+  >
+    <p class="whatsapp">Preferisci scriverci? <a href="https://wa.me/393200831910" rel="noopener">WhatsApp</a></p>
+  </Modulo>
+</Base>
+
+<style>
+  .apertura { padding: 72px 0 88px; }
+  .apertura-griglia { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .apertura h1 { margin: 20px 0; font-size: clamp(44px, 7vw, 72px); }
+  .sottotitolo { font-size: 18px; max-width: 520px; }
+  .sottotitolo strong { color: var(--testo); }
+  .azioni { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 32px 0 20px; }
+
+  .cifre {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 32px;
+    border-radius: 28px; background: linear-gradient(160deg, #fdf3f3 0%, #f1f2f7 100%);
+  }
+  .cifra {
+    background: #fff; border: 1px solid var(--bordo); border-radius: 16px; padding: 20px;
+    box-shadow: var(--ombra); display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+  }
+  .cifra strong { font-family: var(--font-titoli); font-weight: 600; font-size: 24px; color: var(--testo); line-height: 1.1; }
+  .cifra--grande { grid-column: 1 / -1; }
+  .cifra--grande strong { font-size: 56px; color: var(--rosso); }
+  .cifra--scura { grid-column: 1 / -1; background: var(--notte); border-color: var(--notte); color: #c9cad6; }
+  .cifra--scura strong { color: #fff; }
+
+  .nota { margin-top: 24px; font-size: 15px; }
+
+  .linea { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .linea li { display: flex; gap: 16px; align-items: flex-start; }
+  .linea h3 { margin-bottom: 8px; }
+  .tondo {
+    flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--rosso); color: #fff; font-family: var(--font-titoli); font-weight: 600;
+  }
+
+  .offerta {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    padding: 48px; border-radius: 28px; background: var(--rosso); color: #fff;
+  }
+  .offerta > div { max-width: 640px; }
+  .offerta h2 { color: #fff; }
+  .offerta p { margin-top: 14px; color: #fff3f3; font-size: 17px; }
+  .occhiello--chiaro { color: #ffe1e1; }
+
+  .whatsapp { margin-top: 24px; }
+  .whatsapp a { color: var(--rosso); font-weight: 600; }
+
+  @media (max-width: 960px) {
+    .apertura-griglia { grid-template-columns: 1fr; gap: 40px; }
+    .apertura { padding: 48px 0 64px; }
+    .linea { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cifre { padding: 18px; }
+    .offerta { padding: 32px 24px; }
+  }
+</style>

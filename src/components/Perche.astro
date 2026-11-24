@@ -1,0 +1,31 @@
+---
+import { perche } from '../data/sito';
+interface Props { testo?: string }
+const { testo = '' } = Astro.props;
+const icone = [
+  '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>',
+  '<path d="M4 7h16M4 12h16M4 17h10"/>',
+  '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>',
+  '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+];
+---
+<section class="sezione sezione--tenue">
+  <div class="contenitore">
+    <div class="testata">
+      <span class="occhiello">Soluzioni efficaci, risultati misurabili</span>
+      <h2>Perché affidarti a noi?</h2>
+      {testo && <p>{testo}</p>}
+    </div>
+    <div class="griglia griglia--4">
+      {perche.map((p, i) => (
+        <div class="scheda">
+          <div class="icona">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icone[i]} />
+          </div>
+          <h3>{p.titolo}</h3>
+          <p>{p.testo}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

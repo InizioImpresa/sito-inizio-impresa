@@ -1,0 +1,122 @@
+/* Veste grafica del sito nuovo (24/11/2026).
+   Colori: quelli del logo di Inizio (rosso e blu notte).
+   Impaginazione: pulita e ariosa, sullo stile di supernovatechnologies.it
+   (titoli Poppins, testo Figtree, bottoni a capsula, schede bianche con bordo leggero). */
+
+:root {
+  --rosso: #d5414a;
+  --rosso-scuro: #b8323b;
+  --rosso-chiaro: #fcefef;
+  --notte: #2c2e42;
+  --notte-scura: #1f2131;
+  --testo: #2c2e42;
+  --testo-tenue: #5d6073;
+  --sfondo: #ffffff;
+  --sfondo-tenue: #f7f7f9;
+  --bordo: #e6e6ec;
+  --verde: #1f9d63;
+
+  --raggio: 20px;
+  --raggio-piccolo: 12px;
+  --ombra: 0 18px 40px -18px rgba(44, 46, 66, 0.22);
+  --larghezza: 1120px;
+
+  --font-titoli: 'Poppins', system-ui, sans-serif;
+  --font-testo: 'Figtree Variable', 'Figtree', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-testo);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--testo-tenue);
+  background: var(--sfondo);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-titoli);
+  color: var(--testo);
+  font-weight: 600;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(36px, 5.2vw, 56px); line-height: 1.12; letter-spacing: -0.01em; }
+h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.14; letter-spacing: -0.02em; }
+h3 { font-size: 18px; line-height: 1.3; }
+p { margin: 0; }
+.evidenza { color: var(--rosso); }
+
+.contenitore { width: 100%; max-width: var(--larghezza); margin: 0 auto; padding: 0 20px; }
+.sezione { padding: 88px 0; }
+.sezione--tenue { background: var(--sfondo-tenue); }
+.sezione--scura { background: var(--notte-scura); color: #c9cad6; }
+.sezione--scura h2, .sezione--scura h3 { color: #fff; }
+@media (max-width: 720px) { .sezione { padding: 64px 0; } }
+
+.occhiello {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rosso);
+  margin-bottom: 14px;
+}
+.pillola {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  background: var(--rosso-chiaro); color: var(--rosso-scuro);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.pillola::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--rosso); }
+
+.testata { max-width: 680px; margin-bottom: 48px; }
+.testata--centro { margin-left: auto; margin-right: auto; text-align: center; }
+.testata p { margin-top: 16px; font-size: 17px; }
+
+.bottone {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 12px 26px; border-radius: 999px;
+  font-family: var(--font-testo); font-size: 16px; font-weight: 600;
+  text-decoration: none; border: 0; cursor: pointer;
+  transition: background-color .15s, transform .15s;
+}
+.bottone--pieno { background: var(--rosso); color: #fff; }
+.bottone--pieno:hover { background: var(--rosso-scuro); }
+.bottone--notte { background: var(--notte); color: #fff; }
+.bottone--notte:hover { background: var(--notte-scura); }
+.bottone--chiaro { background: #fff; color: var(--notte); }
+.bottone:active { transform: translateY(1px); }
+.collegamento { color: var(--notte); font-weight: 600; text-decoration: none; }
+.collegamento:hover { color: var(--rosso); }
+:focus-visible { outline: 3px solid var(--rosso); outline-offset: 3px; border-radius: 6px; }
+
+.griglia { display: grid; gap: 20px; }
+.griglia--2 { grid-template-columns: repeat(2, 1fr); }
+.griglia--3 { grid-template-columns: repeat(3, 1fr); }
+.griglia--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 960px) { .griglia--4 { grid-template-columns: repeat(2, 1fr); } .griglia--3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .griglia--2, .griglia--3, .griglia--4 { grid-template-columns: 1fr; } }
+
+.scheda {
+  background: #fff; border: 1px solid var(--bordo); border-radius: var(--raggio);
+  padding: 28px;
+}
+.scheda h3 { margin-bottom: 10px; }
+.icona {
+  width: 44px; height: 44px; border-radius: var(--raggio-piccolo);
+  display: grid; place-items: center; margin-bottom: 18px;
+  background: var(--rosso-chiaro); color: var(--rosso);
+}
+.icona svg { width: 22px; height: 22px; }
+.icona--notte { background: #eceef6; color: var(--notte); }
+
+.spunte { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.spunte li { display: inline-flex; align-items: center; gap: 6px; }
+.spunte li::before { content: '✓'; color: var(--verde); font-weight: 700; }

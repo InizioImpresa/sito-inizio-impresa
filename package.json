@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "astro": "^5.13.0",
-    "@astrojs/sitemap": "^3.5.0"
+    "@astrojs/sitemap": "^3.5.0",
+    "@fontsource/poppins": "^5.2.0",
+    "@fontsource-variable/figtree": "^5.2.0",
+    "sharp": "^0.34.0"
   }
 }
