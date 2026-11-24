@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+# Copia completa del vecchio sito (HTML e 49 MB di immagini): resta solo su Drive.
+# I testi estratti invece sono nel repo, in contenuti-originali/.
+originale/html/
+originale/immagini/

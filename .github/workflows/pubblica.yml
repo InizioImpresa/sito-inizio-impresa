@@ -1,0 +1,46 @@
+name: Pubblica
+
+# Stessa tecnica di Officina e Business Control: le librerie non si installano
+# mai sul computer (il progetto sta su Google Drive, che non le regge).
+# A ogni invio su main GitHub costruisce il sito su Linux e lo pubblica
+# sull'indirizzo di prova: https://inizioimpresa.github.io/sito-inizio-impresa/
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  costruisci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Costruzione del sito (versione di prova)
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  pubblica:
+    needs: costruisci
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

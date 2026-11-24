@@ -1,0 +1,15 @@
+{
+  "name": "sito-inizio-impresa",
+  "private": true,
+  "type": "module",
+  "description": "Sito di Inizio Impresa rifatto con Astro. Le librerie si installano solo su GitHub, mai nella cartella su Google Drive.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/sitemap": "^3.5.0"
+  }
+}
